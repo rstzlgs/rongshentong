@@ -1,0 +1,220 @@
+/* common.css - 导航栏、页脚等全局样式 */
+
+/* 全局容器（已存在，确保 footer 内也使用同一容器） */
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 32px;  /* 关键：左右内边距保证内容不贴边 */
+}
+
+/* 主导航栏样式 */
+.main-navbar {
+    background: #ffffff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    padding: 12px 0;
+}
+.nav-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.logo-area {
+    display: flex;
+    flex-direction: column;
+}
+.logo-text {
+    font-size: 1.5rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, #1e4a6e, #c73b2b);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    cursor: pointer;
+}
+.logo-sub {
+    font-size: 0.7rem;
+    color: #6c86a3;
+}
+.nav-menu {
+    display: flex;
+    gap: 28px;
+    list-style: none;
+    align-items: center;
+}
+.nav-item {
+    position: relative;
+}
+.nav-item > a {
+    text-decoration: none;
+    font-weight: 500;
+    color: #1e2f3e;
+    padding: 8px 0;
+    display: inline-block;
+    transition: 0.2s;
+    font-size: 0.95rem;
+}
+.nav-item > a:hover,
+.nav-item.active > a {
+    color: #c73b2b;
+}
+
+/* 巨型下拉菜单 */
+.mega-menu {
+    position: absolute;
+    top: 45px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 280px;                /* 从 420px 缩小到 320px */
+    background: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.15);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.25s ease;
+    z-index: 200;
+    border: 1px solid #eef2f8;
+    padding: 12px;               /* 内边距略微减小 */
+}
+.nav-item:hover .mega-menu {
+    opacity: 1;
+    visibility: visible;
+    top: 40px;
+}
+.mega-section {
+    margin-bottom: 8px;
+}
+.mega-section h4 {
+    font-size: 0.95rem;
+    color: #1e4a6e;
+    border-left: 3px solid #c73b2b;
+    padding-left: 10px;
+    margin-bottom: 8px;
+}
+.mega-links {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+.mega-link-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 4px 8px;
+    border-radius: 12px;
+    transition: 0.2s;
+    cursor: pointer;
+    text-decoration: none;
+    color: #2c3e50;
+}
+.mega-link-item:hover {
+    background: #f8fafc;
+}
+.mega-link-item img {
+    width: 42px;
+    height: 42px;
+    border-radius: 10px;
+    object-fit: cover;
+}
+.mega-link-item .info h5 {
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-top: 8px;
+    margin-bottom: 0;
+}
+.mega-link-item .info p {
+    font-size: 0.65rem;
+    color: #6c86a3;
+    margin-top: 6px; 
+    margin-bottom: 8px; 
+}
+
+.mega-company {
+    margin-top: 8px;
+    padding-top: 8px;
+    border-top: 1px solid #eef2f8;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.mega-company .mega-link-item {
+    padding-left: 0;
+}
+.mobile-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.6rem;
+    cursor: pointer;
+}
+
+/* 页脚样式 - 确保左右有内边距，内容不靠边 */
+.footer {
+    background: #0f2a3b;
+    color: #ccdee9;
+    padding: 48px 0 24px;
+    margin-top: 60px;
+}
+/* 注意：.footer .container 已经继承全局 .container 的 padding: 0 32px，无需重复 */
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 40px;
+}
+.footer a {
+    color: #bdd4e2;
+    text-decoration: none;
+    font-size: 0.85rem;
+    cursor: pointer;
+    display: inline-block;
+    margin: 5px 0;
+}
+.footer a:hover {
+    color: white;
+}
+
+/* 响应式 */
+@media (max-width: 1024px) {
+    .mega-menu {
+        width: 90vw;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+}
+@media (max-width: 900px) {
+    .nav-menu {
+        display: none;
+        width: 100%;
+        flex-direction: column;
+        background: white;
+        padding: 20px;
+        border-radius: 20px;
+        gap: 20px;
+    }
+    .nav-menu.open {
+        display: flex;
+    }
+    .mobile-toggle {
+        display: block;
+    }
+    .mega-menu {
+        position: static;
+        width: 100%;
+        transform: none;
+        left: auto;
+        box-shadow: none;
+        padding: 16px 0 0 20px;
+        opacity: 1;
+        visibility: visible;
+        display: none;
+    }
+    .nav-item:hover .mega-menu {
+        display: block;
+    }
+    .container {
+        padding: 0 20px;   /* 移动端减小内边距 */
+    }
+}

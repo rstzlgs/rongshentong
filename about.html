@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>关于我们 - 厦门荣晟通展览</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="common.css">
+    <style>
+        .page-title {
+            text-align: center;
+            margin: 60px 0 40px;
+        }
+        .page-title h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #1e4a6e;
+        }
+        .about-content {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .about-section {
+            margin-bottom: 60px;
+        }
+        .about-section h2 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: #1e4a6e;
+            border-left: 4px solid #c73b2b;
+            padding-left: 16px;
+        }
+        .about-section p {
+            margin-bottom: 16px;
+            color: #4a627a;
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            text-align: center;
+            margin: 40px 0;
+        }
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #c73b2b;
+        }
+        .stat-label {
+            color: #6c86a3;
+            margin-top: 8px;
+        }
+        .honor-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .honor-item {
+            background: #f8fafc;
+            padding: 20px 24px;
+            border-radius: 16px;
+            flex: 1;
+            min-width: 180px;
+            text-align: center;
+        }
+        .honor-item i {
+            font-size: 2rem;
+            color: #c73b2b;
+            margin-bottom: 12px;
+            display: block;
+        }
+        .honor-item h4 {
+            margin-bottom: 8px;
+        }
+        @media (max-width: 900px) {
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .page-title h1 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- 统一导航栏（与首页完全相同） -->
+<header class="main-navbar">
+    <div class="container nav-container">
+        <div class="logo-area">
+            <div class="logo-text" onclick="location.href='index.html'">厦门荣晟通展览</div>
+            <div class="logo-sub">RONGCHENG EXPO · 展台设计搭建专家</div>
+        </div>
+        <button class="mobile-toggle" id="mobileToggle"><i class="fas fa-bars"></i></button>
+        <ul class="nav-menu" id="navMenu">
+            <li class="nav-item"><a href="index.html">首页</a></li>
+            <li class="nav-item has-mega">
+                <a href="case.html">展台案例 <i class="fas fa-chevron-down"></i></a>
+                <div class="mega-menu">
+                    <div class="mega-section">
+                        <h4>行业案例</h4>
+                        <div class="mega-links">
+                            <div class="mega-link-item" onclick="location.href='case.html?category=tech'">
+                                <img src="https://picsum.photos/id/0/50/50" alt="科技"><div class="info"><h5>科技电子展台</h5><p>华为/大疆展台设计</p></div>
+                            </div>
+                            <div class="mega-link-item" onclick="location.href='case.html?category=medical'">
+                                <img src="https://picsum.photos/id/20/50/50" alt="医疗"><div class="info"><h5>医疗健康展台</h5><p>进博会医疗展区标杆</p></div>
+                            </div>
+                            <div class="mega-link-item" onclick="location.href='case.html?category=auto'">
+                                <img src="https://picsum.photos/id/91/50/50" alt="汽车"><div class="info"><h5>汽车工业展台</h5><p>比亚迪/宁德时代案例</p></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mega-section">
+                        <h4>按展台规模</h4>
+                        <div class="mega-links">
+                            <div class="mega-link-item" onclick="location.href='case.html?size=small'">
+                                <img src="https://picsum.photos/id/26/50/50" alt="小型"><div class="info"><h5>36㎡-100㎡精品展台</h5><p>轻巧灵动高性价比</p></div>
+                            </div>
+                            <div class="mega-link-item" onclick="location.href='case.html?size=medium'">
+                                <img src="https://picsum.photos/id/42/50/50" alt="中型"><div class="info"><h5>100㎡-300㎡特装展台</h5><p>创意与功能融合</p></div>
+                            </div>
+                            <div class="mega-link-item" onclick="location.href='case.html?size=large'">
+                                <img src="https://picsum.photos/id/58/50/50" alt="大型"><div class="info"><h5>300㎡+ 大型展位</h5><p>品牌地标级展台</p></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mega-company">
+                        <div class="mega-link-item" onclick="location.href='case.html?featured=true'">
+                            <i class="fas fa-star" style="font-size:1.5rem; color:#c73b2b;"></i>
+                            <div class="info"><h5>优秀案例精选</h5><p>历年获奖展台合集 →</p></div>
+                        </div>
+                        <div class="mega-link-item" onclick="location.href='case.html'">
+                            <i class="fas fa-th-large" style="font-size:1.5rem; color:#1e4a6e;"></i>
+                            <div class="info"><h5>全部案例</h5><p>查看所有设计作品 →</p></div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li class="nav-item has-mega">
+                <a href="about.html">了解我们 <i class="fas fa-chevron-down"></i></a>
+                <div class="mega-menu">
+                    <div style="display: flex; gap: 24px;">
+                        <img src="https://picsum.photos/id/104/120/120" style="border-radius: 16px; width: 100px; height: 100px; object-fit: cover;">
+                        <div>
+                            <h4 style="color:#1e4a6e;">厦门荣晟通展览</h4>
+                            <p style="font-size: 0.8rem; margin: 8px 0;">专注展览行业15年，为5000+企业提供展台设计、搭建一站式服务，进博会推荐搭建商。</p>
+                            <div class="mega-link-item" onclick="location.href='about.html'" style="padding-left:0;"><span>公司简介 →</span></div>
+                            <div class="mega-link-item" onclick="location.href='about.html'" style="padding-left:0;"><span>资质荣誉 →</span></div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li class="nav-item has-mega">
+                <a href="expo.html">展会信息 <i class="fas fa-chevron-down"></i></a>
+                <div class="mega-menu">
+                    <div class="mega-section">
+                        <h4>近期国内展会</h4>
+                        <div class="mega-links">
+                            <div class="mega-link-item" onclick="location.href='expo.html'"><div><i class="fas fa-map-marker-alt"></i> 上海 · 进博会</div><div style="font-size:0.7rem;">2026.11.05-11.10</div></div>
+                            <div class="mega-link-item" onclick="location.href='expo.html'"><div><i class="fas fa-map-marker-alt"></i> 广州 · 广交会</div><div style="font-size:0.7rem;">2026.10.15-11.04</div></div>
+                            <div class="mega-link-item" onclick="location.href='expo.html'"><div><i class="fas fa-map-marker-alt"></i> 北京 · 服贸会</div><div style="font-size:0.7rem;">2026.09.12-09.16</div></div>
+                        </div>
+                    </div>
+                    <div class="mega-section">
+                        <h4>热门行业展</h4>
+                        <div class="mega-links">
+                            <div class="mega-link-item" onclick="location.href='expo.html'"><span>电子科技展</span><span>深圳 · 4月</span></div>
+                            <div class="mega-link-item" onclick="location.href='expo.html'"><span>医疗器械展</span><span>上海 · 5月</span></div>
+                            <div class="mega-link-item" onclick="location.href='expo.html'"><span>食品饮料展</span><span>成都 · 7月</span></div>
+                        </div>
+                    </div>
+                    <div class="mega-company"><div class="mega-link-item" onclick="location.href='expo.html'">查看全部展会排期 →</div></div>
+                </div>
+            </li>
+            <li class="nav-item"><a href="contact.html">联系我们</a></li>
+        </ul>
+    </div>
+</header>
+
+<div class="container">
+    <div class="page-title">
+        <h1>关于我们</h1>
+    </div>
+    
+    <div class="about-content">
+        <div class="about-section">
+            <h2>公司简介</h2>
+            <p>厦门荣晟通展览公司成立于2010年，总部位于厦门，是一家专注于展台设计、展览搭建、活动策划的一站式服务企业。公司拥有100+资深设计师，服务网络覆盖全国300+城市，累计搭建面积超过40万平方米。</p>
+            <p>作为进博会推荐搭建商、中国展览馆协会会员单位，荣晟通始终秉承“专业、创新、诚信、共赢”的服务理念，致力于为全球客户提供高品质的展台设计搭建服务。</p>
+        </div>
+        
+        <div class="stats-grid">
+            <div><div class="stat-number">15年</div><div class="stat-label">行业经验</div></div>
+            <div><div class="stat-number">5000+</div><div class="stat-label">服务客户</div></div>
+            <div><div class="stat-number">40万+㎡</div><div class="stat-label">搭建面积</div></div>
+            <div><div class="stat-number">300+</div><div class="stat-label">城市覆盖</div></div>
+        </div>
+        
+        <div class="about-section">
+            <h2>资质荣誉</h2>
+            <div class="honor-list">
+                <div class="honor-item"><i class="fas fa-certificate"></i><h4>进博会推荐搭建商</h4><p>官方认可资质</p></div>
+                <div class="honor-item"><i class="fas fa-trophy"></i><h4>最佳展台设计奖</h4><p>2024年度</p></div>
+                <div class="honor-item"><i class="fas fa-star"></i><h4>AAA级信用企业</h4><p>守合同重信用</p></div>
+                <div class="honor-item"><i class="fas fa-users"></i><h4>中国展览馆协会会员</h4><p>行业权威认证</p></div>
+            </div>
+        </div>
+        
+        <div class="about-section">
+            <h2>服务流程</h2>
+            <div class="honor-list">
+                <div class="honor-item"><i class="fas fa-comments"></i><h4>需求沟通</h4><p>了解客户需求</p></div>
+                <div class="honor-item"><i class="fas fa-pencil-ruler"></i><h4>方案设计</h4><p>3D效果图确认</p></div>
+                <div class="honor-item"><i class="fas fa-hard-hat"></i><h4>施工搭建</h4><p>工厂制作+现场搭建</p></div>
+                <div class="honor-item"><i class="fas fa-headset"></i><h4>售后保障</h4><p>全程服务支持</p></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer class="footer">
+    <div class="container footer-grid">
+        <div><h4>厦门荣晟通展览</h4><p>展台设计/搭建/活动策划<br>咨询热线：400-6688-321</p></div>
+        <div><h4>快速链接</h4><a href="index.html">首页</a><br><a href="case.html">展台案例</a><br><a href="about.html">关于我们</a><br><a href="expo.html">展会排期</a><br><a href="contact.html">联系我们</a></div>
+        <div><h4>关注我们</h4><p><i class="fab fa-weixin"></i> 官方微信</p><img src="https://picsum.photos/id/20/100/80" style="width:80px; border-radius:8px;"></div>
+    </div>
+    <div class="container" style="text-align:center; margin-top:32px; border-top:1px solid #2c4b64; padding-top:20px;">© 2025 厦门荣晟通展览公司 版权所有</div>
+</footer>
+
+<script src="common.js"></script>
+</body>
+</html>
