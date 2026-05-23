@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="common.css">
     <style>
+        /* 样式保持不变 */
         .page-title {
             text-align: center;
             margin: 60px 0 40px;
@@ -21,11 +22,9 @@
             color: #6c86a3;
             margin-top: 12px;
         }
-
-        /* 筛选组样式：无标签，按钮居中 */
         .filter-group {
             margin-bottom: 20px;
-            text-align: center;   /* 整体居中 */
+            text-align: center;
         }
         .filter-tabs {
             display: inline-flex;
@@ -52,7 +51,6 @@
             background: #c73b2b;
             color: white;
         }
-
         .case-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
@@ -96,7 +94,7 @@
             font-size: 0.7rem;
             margin-right: 6px;
         }
-        .featured-badge {
+        .built-badge {
             background: #c73b2b;
             color: white;
         }
@@ -109,12 +107,15 @@
 </head>
 <body>
 
-<!-- 导航栏保持不变（省略中间部分，与原有代码一致） -->
+<!-- 导航栏（与首页相同） -->
 <header class="main-navbar">
     <div class="container nav-container">
-        <div class="logo-area">
-            <div class="logo-text" onclick="location.href='index.html'">厦门荣晟通展览</div>
-            <div class="logo-sub">RONGCHENG EXPO · 展台设计搭建专家</div>
+        <div class="logo-area" style="display: flex !important; flex-direction: row !important; align-items: center; gap: 12px; flex-wrap: nowrap;">
+            <img src="images/logo.jpg" alt="荣晟通展览" style="height: 45px; width: auto; flex-shrink: 0;">
+            <div>
+                <div class="logo-text" style="background: linear-gradient(135deg, #499FC7, #2A5997); background-clip: text; -webkit-background-clip: text; color: transparent;" onclick="location.href='index.html'">荣晟通展览公司</div>
+                <div class="logo-sub">RONGSHENGTONG EXPO · 展台设计搭建专家</div>
+            </div>
         </div>
         <button class="mobile-toggle" id="mobileToggle"><i class="fas fa-bars"></i></button>
         <ul class="nav-menu" id="navMenu">
@@ -122,64 +123,14 @@
             <li class="nav-item has-mega">
                 <a href="case.html">展台案例 <i class="fas fa-chevron-down"></i></a>
                 <div class="mega-menu">
-                    <div class="mega-section">
-                        <h4>行业案例</h4>
-                        <div class="mega-links">
-                            <div class="mega-link-item" onclick="location.href='case.html?category=tech'"><img src="https://picsum.photos/id/0/50/50" alt="科技"><div class="info"><h5>科技电子展台</h5><p>华为/大疆展台设计</p></div></div>
-                            <div class="mega-link-item" onclick="location.href='case.html?category=medical'"><img src="https://picsum.photos/id/20/50/50" alt="医疗"><div class="info"><h5>医疗健康展台</h5><p>进博会医疗展区标杆</p></div></div>
-                            <div class="mega-link-item" onclick="location.href='case.html?category=auto'"><img src="https://picsum.photos/id/91/50/50" alt="汽车"><div class="info"><h5>汽车工业展台</h5><p>比亚迪/宁德时代案例</p></div></div>
-                        </div>
-                    </div>
-                    <div class="mega-section">
-                        <h4>按展台规模</h4>
-                        <div class="mega-links">
-                            <div class="mega-link-item" onclick="location.href='case.html?size=small'"><img src="https://picsum.photos/id/26/50/50" alt="小型"><div class="info"><h5>36㎡-100㎡精品展台</h5><p>轻巧灵动高性价比</p></div></div>
-                            <div class="mega-link-item" onclick="location.href='case.html?size=medium'"><img src="https://picsum.photos/id/42/50/50" alt="中型"><div class="info"><h5>100㎡-300㎡特装展台</h5><p>创意与功能融合</p></div></div>
-                            <div class="mega-link-item" onclick="location.href='case.html?size=large'"><img src="https://picsum.photos/id/58/50/50" alt="大型"><div class="info"><h5>300㎡+ 大型展位</h5><p>品牌地标级展台</p></div></div>
-                        </div>
-                    </div>
-                    <div class="mega-company">
-                        <div class="mega-link-item" onclick="location.href='case.html?featured=true'"><i class="fas fa-star" style="font-size:1.5rem; color:#c73b2b;"></i><div class="info"><h5>优秀案例精选</h5><p>历年获奖展台合集 →</p></div></div>
-                        <div class="mega-link-item" onclick="location.href='case.html'"><i class="fas fa-th-large" style="font-size:1.5rem; color:#1e4a6e;"></i><div class="info"><h5>全部案例</h5><p>查看所有设计作品 →</p></div></div>
-                    </div>
+                    <!-- 下拉菜单内容同之前，此处略 -->
+                    <div class="mega-section"><h4>行业案例</h4><div class="mega-links"><div class="mega-link-item" onclick="location.href='case.html?category=tech'"><img src="images/case/case1-1.jpg" alt="科技"><div class="info"><h5>科技电子展台</h5><p>科技/机械设备展台设计</p></div></div><div class="mega-link-item" onclick="location.href='case.html?category=medical'"><img src="images/case/case5-1.jpg" alt="医疗"><div class="info"><h5>美容美妆展台</h5><p>美容/医疗健康展台设计搭建</p></div></div><div class="mega-link-item" onclick="location.href='case.html?category=auto'"><img src="images/case/case4-1.jpg" alt="日用礼品"><div class="info"><h5>日用礼品台</h5><p>日用品小展台设计</p></div></div></div></div>
+                    <div class="mega-section"><h4>按展台规模</h4><div class="mega-links"><div class="mega-link-item" onclick="location.href='case.html?size=small'"><img src="images/case/case3-1.jpg" alt="小型"><div class="info"><h5>9㎡-36㎡精品展台</h5><p>轻巧灵动高性价比</p></div></div><div class="mega-link-item" onclick="location.href='case.html?size=medium'"><img src="images/case/case2-1.jpg" alt="中型"><div class="info"><h5>36㎡-72㎡特装展台</h5><p>创意与功能融合</p></div></div><div class="mega-link-item" onclick="location.href='case.html?size=large'"><img src="images/case/case7-1.jpg" alt="大型"><div class="info"><h5>80㎡+ 大型展位</h5><p>品牌地标级展台</p></div></div></div></div>
+                    <div class="mega-company"><div class="mega-link-item" onclick="location.href='case.html?built=true'"><i class="fas fa-star" style="font-size:1.5rem; color:#c73b2b;"></i><div class="info"><h5>落地案例精选</h5><p>成功搭建展台合集 →</p></div></div><div class="mega-link-item" onclick="location.href='case.html'"><i class="fas fa-th-large" style="font-size:1.5rem; color:#1e4a6e;"></i><div class="info"><h5>全部案例</h5><p>查看所有设计作品 →</p></div></div></div>
                 </div>
             </li>
-            <li class="nav-item has-mega">
-                <a href="about.html">了解我们 <i class="fas fa-chevron-down"></i></a>
-                <div class="mega-menu">
-                    <div style="display: flex; gap: 24px;">
-                        <img src="https://picsum.photos/id/104/120/120" style="border-radius: 16px; width: 100px; height: 100px; object-fit: cover;">
-                        <div>
-                            <h4 style="color:#1e4a6e;">厦门荣晟通展览</h4>
-                            <p style="font-size: 0.8rem; margin: 8px 0;">专注展览行业15年，为5000+企业提供展台设计、搭建一站式服务，进博会推荐搭建商。</p>
-                            <div class="mega-link-item" onclick="location.href='about.html'" style="padding-left:0;"><span>公司简介 →</span></div>
-                            <div class="mega-link-item" onclick="location.href='about.html'" style="padding-left:0;"><span>资质荣誉 →</span></div>
-                        </div>
-                    </div>
-                </div>
-            </li>
-            <li class="nav-item has-mega">
-                <a href="expo.html">展会信息 <i class="fas fa-chevron-down"></i></a>
-                <div class="mega-menu">
-                    <div class="mega-section">
-                        <h4>近期国内展会</h4>
-                        <div class="mega-links">
-                            <div class="mega-link-item" onclick="location.href='expo.html'"><div><i class="fas fa-map-marker-alt"></i> 上海 · 进博会</div><div style="font-size:0.7rem;">2026.11.05-11.10</div></div>
-                            <div class="mega-link-item" onclick="location.href='expo.html'"><div><i class="fas fa-map-marker-alt"></i> 广州 · 广交会</div><div style="font-size:0.7rem;">2026.10.15-11.04</div></div>
-                            <div class="mega-link-item" onclick="location.href='expo.html'"><div><i class="fas fa-map-marker-alt"></i> 北京 · 服贸会</div><div style="font-size:0.7rem;">2026.09.12-09.16</div></div>
-                        </div>
-                    </div>
-                    <div class="mega-section">
-                        <h4>热门行业展</h4>
-                        <div class="mega-links">
-                            <div class="mega-link-item" onclick="location.href='expo.html'"><span>电子科技展</span><span>深圳 · 4月</span></div>
-                            <div class="mega-link-item" onclick="location.href='expo.html'"><span>医疗器械展</span><span>上海 · 5月</span></div>
-                            <div class="mega-link-item" onclick="location.href='expo.html'"><span>食品饮料展</span><span>成都 · 7月</span></div>
-                        </div>
-                    </div>
-                    <div class="mega-company"><div class="mega-link-item" onclick="location.href='expo.html'">查看全部展会排期 →</div></div>
-                </div>
-            </li>
+            <li class="nav-item has-mega"><a href="about.html">了解我们 <i class="fas fa-chevron-down"></i></a><div class="mega-menu"><div style="display: flex; gap: 24px;"><img src="https://picsum.photos/id/104/120/120" style="border-radius: 16px; width: 100px; height: 100px; object-fit: cover;"><div><h4 style="color:#1e4a6e;">厦门荣晟通展览</h4><p style="font-size: 0.8rem; margin: 8px 0;">专注展览行业15年，为5000+企业提供展台设计、搭建一站式服务，进博会推荐搭建商。</p><div class="mega-link-item" onclick="location.href='about.html'" style="padding-left:0;"><span>公司简介 →</span></div><div class="mega-link-item" onclick="location.href='about.html'" style="padding-left:0;"><span>资质荣誉 →</span></div></div></div></div></li>
+            <li class="nav-item has-mega"><a href="expo.html">展会信息 <i class="fas fa-chevron-down"></i></a><div class="mega-menu"><div class="mega-section"><h4>近期国内展会</h4><div class="mega-links"><div class="mega-link-item" onclick="location.href='expo.html'"><div><i class="fas fa-map-marker-alt"></i> 上海 · 进博会</div><div style="font-size:0.7rem;">2026.11.05-11.10</div></div><div class="mega-link-item" onclick="location.href='expo.html'"><div><i class="fas fa-map-marker-alt"></i> 广州 · 广交会</div><div style="font-size:0.7rem;">2026.10.15-11.04</div></div><div class="mega-link-item" onclick="location.href='expo.html'"><div><i class="fas fa-map-marker-alt"></i> 北京 · 服贸会</div><div style="font-size:0.7rem;">2026.09.12-09.16</div></div></div></div><div class="mega-section"><h4>热门行业展</h4><div class="mega-links"><div class="mega-link-item" onclick="location.href='expo.html'"><span>电子科技展</span><span>深圳 · 4月</span></div><div class="mega-link-item" onclick="location.href='expo.html'"><span>医疗器械展</span><span>上海 · 5月</span></div><div class="mega-link-item" onclick="location.href='expo.html'"><span>食品饮料展</span><span>成都 · 7月</span></div></div></div><div class="mega-company"><div class="mega-link-item" onclick="location.href='expo.html'">查看全部展会排期 →</div></div></div></li>
             <li class="nav-item"><a href="contact.html">联系我们</a></li>
         </ul>
     </div>
@@ -188,35 +139,32 @@
 <div class="container">
     <div class="page-title">
         <h1>展台案例</h1>
-        <p>500+成功案例，覆盖科技、医疗、汽车、食品等多行业</p>
+        <p>500+成功案例，覆盖科技、医疗、美容美妆、日用品等多行业</p>
     </div>
 
-    <!-- 行业分类按钮组（无标签） -->
     <div class="filter-group">
         <div class="filter-tabs" id="categoryTabs">
             <div class="filter-tab" data-category="all">全部行业</div>
-            <div class="filter-tab" data-category="tech">科技电子</div>
-            <div class="filter-tab" data-category="medical">医疗健康</div>
-            <div class="filter-tab" data-category="auto">汽车工业</div>
-            <div class="filter-tab" data-category="food">食品饮料</div>
+            <div class="filter-tab" data-category="tech">科技电子/机械设备</div>
+            <div class="filter-tab" data-category="beauty">美容美妆</div>
+            <div class="filter-tab" data-category="daily_goods">日用礼品</div>
+            <div class="filter-tab" data-category="medical">医疗器械</div>
         </div>
     </div>
 
-    <!-- 展台规模按钮组（无标签） -->
     <div class="filter-group">
         <div class="filter-tabs" id="sizeTabs">
             <div class="filter-tab" data-size="all">全部规模</div>
-            <div class="filter-tab" data-size="small">小型 (≤100㎡)</div>
-            <div class="filter-tab" data-size="medium">中型 (100-300㎡)</div>
-            <div class="filter-tab" data-size="large">大型 (≥300㎡)</div>
+            <div class="filter-tab" data-size="small">小型 (≤36㎡)</div>
+            <div class="filter-tab" data-size="medium">中型 (36-72㎡)</div>
+            <div class="filter-tab" data-size="large">大型 (>72㎡)</div>
         </div>
     </div>
 
-    <!-- 优秀案例按钮组（无标签） -->
     <div class="filter-group">
-        <div class="filter-tabs" id="featuredTabs">
-            <div class="filter-tab" data-featured="all">全部案例</div>
-            <div class="filter-tab" data-featured="true">优秀案例</div>
+        <div class="filter-tabs" id="builtTabs">
+            <div class="filter-tab" data-built="all">全部案例</div>
+            <div class="filter-tab" data-built="true">落地案例</div>
         </div>
     </div>
 
@@ -225,34 +173,34 @@
 
 <footer class="footer">
     <div class="container footer-grid">
-        <div><h4>厦门荣晟通展览</h4><p>展台设计/搭建/活动策划<br>咨询热线：400-6688-321</p></div>
+        <div><h4>厦门荣晟通展览</h4><p>展台设计/搭建/活动策划<br>咨询热线：13859987737</p></div>
         <div><h4>快速链接</h4><a href="index.html">首页</a><br><a href="case.html">展台案例</a><br><a href="about.html">关于我们</a><br><a href="expo.html">展会排期</a><br><a href="contact.html">联系我们</a></div>
-        <div><h4>关注我们</h4><p><i class="fab fa-weixin"></i> 官方微信</p><img src="https://picsum.photos/id/20/100/80" style="width:80px; border-radius:8px;"></div>
+        <div><h4>关注我们</h4><p><i class="fab fa-weixin"></i> 官方微信</p><img src="images/wechat_QR.jpg" style="width:80px; border-radius:8px;"></div>
     </div>
     <div class="container" style="text-align:center; margin-top:32px; border-top:1px solid #2c4b64; padding-top:20px;">© 2025 厦门荣晟通展览公司 版权所有</div>
 </footer>
 
 <script src="common.js"></script>
 <script>
-    // ... 所有 JavaScript 代码保持不变（与用户原有代码完全一致）...
+    // 案例数据：使用本地图片路径 images/case/case{id}-1.jpg
     const allCases = [
-        { category: "tech", size: "large", featured: true, img: "https://picsum.photos/id/0/400/240", title: "华为 · MWC展台", desc: "科技感流线型设计，面积200㎡" },
-        { category: "tech", size: "medium", featured: false, img: "https://picsum.photos/id/26/400/240", title: "小米 · 世界移动通信大会", desc: "智能生态体验空间，面积120㎡" },
-        { category: "medical", size: "large", featured: true, img: "https://picsum.photos/id/20/400/240", title: "迈瑞医疗 · CMEF", desc: "简约医疗风，国际感设计，面积300㎡" },
-        { category: "medical", size: "large", featured: false, img: "https://picsum.photos/id/42/400/240", title: "联影医疗 · 进博会", desc: "科技与人文结合，面积400㎡" },
-        { category: "auto", size: "large", featured: true, img: "https://picsum.photos/id/91/400/240", title: "比亚迪 · 北京车展", desc: "新能源生态展台，面积360㎡" },
-        { category: "auto", size: "large", featured: false, img: "https://picsum.photos/id/58/400/240", title: "宁德时代 · 上海车展", desc: "绿色能源主题，面积500㎡" },
-        { category: "food", size: "medium", featured: false, img: "https://picsum.photos/id/30/400/240", title: "茅台 · 糖酒会", desc: "东方美学展台，面积180㎡" },
-        { category: "food", size: "small", featured: false, img: "https://picsum.photos/id/96/400/240", title: "伊利 · 食品展", desc: "健康活力主题，面积80㎡" },
-        { category: "tech", size: "small", featured: true, img: "https://picsum.photos/id/86/400/240", title: "某科技公司 · 36㎡展台", desc: "小面积也能出彩，功能分区合理，面积36㎡" },
-        { category: "medical", size: "medium", featured: false, img: "https://picsum.photos/id/76/400/240", title: "某医疗企业 · 150㎡展台", desc: "紧凑布局，展示空间最大化，面积150㎡" },
-        { category: "auto", size: "large", featured: true, img: "https://picsum.photos/id/106/400/240", title: "某汽车品牌 · 600㎡展台", desc: "双层结构，品牌形象突出，面积600㎡" },
-        { category: "tech", size: "large", featured: true, img: "https://picsum.photos/id/116/400/240", title: "某科技巨头 · 800㎡展台", desc: "沉浸式体验，科技感十足，面积800㎡" }
+        { id: 1, category: "medical", size: "medium", built: false, img: "images/case/case1-1.jpg", title: "海之林 · 上海制药机械展", desc: "科技感流线型设计，面积99㎡" },
+        { id: 2, category: "tech", size: "medium", built: false, img: "images/case/case2-1.jpg", title: "超强伟业 · 深圳焊接与切割展", desc: "简约科技感，打造智能体验空间，面积72㎡" },
+        { id: 3, category: "beauty", size: "small", built: true, img: "images/case/case3-1.jpg", title: "齐裕包装 · CBE中国美容博览会", desc: "简约现代风，国际感设计，面积33㎡" },
+        { id: 4, category: "daily_goods", size: "small", built: false, img: "images/case/case4-1.jpg", title: "天羿工贸 · 中国日用百货商品交易会", desc: "配色清新，增强视觉活力，面积36㎡" },
+        { id: 5, category: "beauty", size: "small", built: true, img: "images/case/case5-1.jpg", title: "易可美 · 上海美博会", desc: "简约小展台，面积18㎡" },
+        { id: 6, category: "medical", size: "small", built: false, img: "images/case/case6-1.jpg", title: "甘肃骏茂 · 世界制药原料中国展", desc: "绿色健康主题，面积36㎡" },
+        { id: 7, category: "tech", size: "large", built: false, img: "images/case/case7-1.jpg", title: "鑫全利 · 埃森焊接与切割展", desc: "科技大展台，面积180㎡" },
+        { id: 8, category: "tech", size: "medium", built: false, img: "images/case/case8-1.jpg", title: "汇川技术 · 中国青岛国际工业自动化技术及装备展", desc: "双色搭配，合展设计，面积72㎡" },
+        // { id: 9, category: "tech", size: "small", built: true, img: "images/case/case9-1.jpg", title: "某科技公司 · 36㎡展台", desc: "小面积也能出彩，功能分区合理，面积36㎡" },
+        // { id: 10, category: "medical", size: "medium", built: false, img: "images/case/case10-1.jpg", title: "某医疗企业 · 150㎡展台", desc: "紧凑布局，展示空间最大化，面积150㎡" },
+        // { id: 11, category: "daily_goods", size: "large", built: true, img: "images/case/case11-1.jpg", title: "某汽车品牌 · 600㎡展台", desc: "双层结构，品牌形象突出，面积600㎡" },
+        // { id: 12, category: "tech", size: "large", built: true, img: "images/case/case12-1.jpg", title: "某科技巨头 · 800㎡展台", desc: "沉浸式体验，科技感十足，面积800㎡" }
     ];
 
     let currentCategory = "all";
     let currentSize = "all";
-    let currentFeatured = "all";
+    let currentbuilt = "all";
 
     function renderCases() {
         let filtered = allCases;
@@ -262,19 +210,20 @@
         if (currentSize !== "all") {
             filtered = filtered.filter(c => c.size === currentSize);
         }
-        if (currentFeatured === "true") {
-            filtered = filtered.filter(c => c.featured === true);
+        if (currentbuilt === "true") {
+            filtered = filtered.filter(c => c.built === true);
         }
+
         const grid = document.getElementById("caseGrid");
         if (grid) {
             grid.innerHTML = filtered.map(c => `
-                <div class="case-card" onclick="alert('案例详情咨询：400-6688-321')">
+                <div class="case-card" onclick="location.href='case-detail.html?id=${c.id}'">
                     <div class="case-img" style="background-image: url('${c.img}');"></div>
                     <div class="case-info">
                         <h4>${c.title}</h4>
                         <p>${c.desc}</p>
-                        <span class="case-badge">面积：${c.size === "small" ? "≤100㎡" : (c.size === "medium" ? "100-300㎡" : "≥300㎡")}</span>
-                        ${c.featured ? '<span class="case-badge featured-badge">⭐ 优秀案例</span>' : ''}
+                        <span class="case-badge">面积：${c.size === "small" ? "≤36㎡" : (c.size === "medium" ? "36-72㎡" : ">72㎡")}</span>
+                        ${c.built ? '<span class="case-badge built-badge">⭐ 落地案例</span>' : ''}
                     </div>
                 </div>
             `).join('');
@@ -301,10 +250,10 @@
         updateURL();
     }
 
-    function setActiveFeatured(featured) {
-        currentFeatured = featured;
-        document.querySelectorAll('#featuredTabs .filter-tab').forEach(tab => {
-            if (tab.getAttribute('data-featured') === featured) tab.classList.add('active');
+    function setActivebuilt(built) {
+        currentbuilt = built;
+        document.querySelectorAll('#builtTabs .filter-tab').forEach(tab => {
+            if (tab.getAttribute('data-built') === built) tab.classList.add('active');
             else tab.classList.remove('active');
         });
         renderCases();
@@ -315,7 +264,7 @@
         const params = new URLSearchParams();
         if (currentCategory !== 'all') params.set('category', currentCategory);
         if (currentSize !== 'all') params.set('size', currentSize);
-        if (currentFeatured === 'true') params.set('featured', 'true');
+        if (currentbuilt === 'true') params.set('built', 'true');
         const newUrl = window.location.pathname + (params.toString() ? '?' + params.toString() : '');
         window.history.pushState({}, '', newUrl);
     }
@@ -324,8 +273,8 @@
         const params = new URLSearchParams(window.location.search);
         const categoryParam = params.get('category');
         const sizeParam = params.get('size');
-        const featuredParam = params.get('featured');
-        if (categoryParam && ['tech', 'medical', 'auto', 'food'].includes(categoryParam)) {
+        const builtParam = params.get('built');
+        if (categoryParam && ['tech', 'beauty', 'daily_goods', 'medical'].includes(categoryParam)) {
             setActiveCategory(categoryParam);
         } else {
             setActiveCategory('all');
@@ -335,10 +284,10 @@
         } else {
             setActiveSize('all');
         }
-        if (featuredParam === 'true') {
-            setActiveFeatured('true');
+        if (builtParam === 'true') {
+            setActivebuilt('true');
         } else {
-            setActiveFeatured('all');
+            setActivebuilt('all');
         }
     }
 
@@ -349,8 +298,8 @@
         document.querySelectorAll('#sizeTabs .filter-tab').forEach(tab => {
             tab.addEventListener('click', () => setActiveSize(tab.getAttribute('data-size')));
         });
-        document.querySelectorAll('#featuredTabs .filter-tab').forEach(tab => {
-            tab.addEventListener('click', () => setActiveFeatured(tab.getAttribute('data-featured')));
+        document.querySelectorAll('#builtTabs .filter-tab').forEach(tab => {
+            tab.addEventListener('click', () => setActivebuilt(tab.getAttribute('data-built')));
         });
     }
 
