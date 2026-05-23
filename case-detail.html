@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>案例详情 - 厦门荣晟通展览</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="common.css">
+    <style>
+        .detail-container {
+            max-width: 1200px;
+            margin: 60px auto;
+            padding: 0 20px;
+        }
+        .detail-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #1e4a6e;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .detail-sub {
+            text-align: center;
+            color: #6c86a3;
+            margin-bottom: 30px;
+        }
+        .main-img {
+            width: 100%;
+            max-height: 500px;
+            object-fit: cover;
+            border-radius: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            cursor: pointer;
+        }
+        .detail-desc {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #4a627a;
+            margin-bottom: 30px;
+        }
+        .detail-info {
+            background: #f8fafc;
+            padding: 20px;
+            border-radius: 16px;
+            margin-bottom: 30px;
+        }
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        .gallery img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: 0.3s;
+            border: 1px solid #eef2f8;
+        }
+        .gallery img:hover {
+            transform: scale(1.02);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+        .back-link {
+            display: inline-block;
+            margin-top: 20px;
+            color: #c73b2b;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        .loading {
+            text-align: center;
+            padding: 50px;
+            font-size: 1.2rem;
+            color: #6c86a3;
+        }
+        .btn-primary {
+            background: #c73b2b;
+            color: white;
+            padding: 12px 28px;
+            border-radius: 40px;
+            font-weight: 600;
+            display: inline-block;
+            margin-top: 20px;
+            border: none;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        /* ---------- 灯箱样式 ---------- */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        .lightbox.active {
+            display: flex;
+        }
+        .lightbox-img {
+            max-width: 90%;
+            max-height: 80%;
+            object-fit: contain;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
+        }
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 2rem;
+            color: white;
+            cursor: pointer;
+            background: none;
+            border: none;
+            z-index: 1001;
+        }
+        .lightbox-prev,
+        .lightbox-next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 2rem;
+            color: white;
+            background: rgba(0,0,0,0.5);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .lightbox-prev:hover,
+        .lightbox-next:hover {
+            background: rgba(0,0,0,0.8);
+        }
+        .lightbox-prev {
+            left: 20px;
+        }
+        .lightbox-next {
+            right: 20px;
+        }
+        @media (max-width: 768px) {
+            .lightbox-prev,
+            .lightbox-next {
+                width: 40px;
+                height: 40px;
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- 导航栏（与首页完全相同） -->
+<header class="main-navbar">
+    <div class="container nav-container">
+        <div class="logo-area" style="display: flex !important; flex-direction: row !important; align-items: center; gap: 12px; flex-wrap: nowrap;">
+            <img src="images/logo.jpg" alt="荣晟通展览" style="height: 45px; width: auto; flex-shrink: 0;">
+            <div>
+                <div class="logo-text" style="background: linear-gradient(135deg, #499FC7, #2A5997); background-clip: text; -webkit-background-clip: text; color: transparent;" onclick="location.href='index.html'">荣晟通展览公司</div>
+                <div class="logo-sub">RONGSHENGTONG EXPO · 展台设计搭建专家</div>
+            </div>
+        </div>
+        <button class="mobile-toggle" id="mobileToggle"><i class="fas fa-bars"></i></button>
+        <ul class="nav-menu" id="navMenu">
+            <li class="nav-item"><a href="index.html">首页</a></li>
+            <li class="nav-item has-mega">
+                <a href="case.html">展台案例 <i class="fas fa-chevron-down"></i></a>
+                <div class="mega-menu">
+                    <!-- 下拉菜单内容同之前，此处略 -->
+                    <div class="mega-section"><h4>行业案例</h4><div class="mega-links"><div class="mega-link-item" onclick="location.href='case.html?category=tech'"><img src="images/case/case1-1.jpg" alt="科技"><div class="info"><h5>科技电子展台</h5><p>科技/机械设备展台设计</p></div></div><div class="mega-link-item" onclick="location.href='case.html?category=medical'"><img src="images/case/case5-1.jpg" alt="医疗"><div class="info"><h5>美容美妆展台</h5><p>美容/医疗健康展台设计搭建</p></div></div><div class="mega-link-item" onclick="location.href='case.html?category=auto'"><img src="images/case/case4-1.jpg" alt="日用礼品"><div class="info"><h5>日用礼品台</h5><p>日用品小展台设计</p></div></div></div></div>
+                    <div class="mega-section"><h4>按展台规模</h4><div class="mega-links"><div class="mega-link-item" onclick="location.href='case.html?size=small'"><img src="images/case/case3-1.jpg" alt="小型"><div class="info"><h5>9㎡-36㎡精品展台</h5><p>轻巧灵动高性价比</p></div></div><div class="mega-link-item" onclick="location.href='case.html?size=medium'"><img src="images/case/case2-1.jpg" alt="中型"><div class="info"><h5>36㎡-72㎡特装展台</h5><p>创意与功能融合</p></div></div><div class="mega-link-item" onclick="location.href='case.html?size=large'"><img src="images/case/case7-1.jpg" alt="大型"><div class="info"><h5>80㎡+ 大型展位</h5><p>品牌地标级展台</p></div></div></div></div>
+                    <div class="mega-company"><div class="mega-link-item" onclick="location.href='case.html?built=true'"><i class="fas fa-star" style="font-size:1.5rem; color:#c73b2b;"></i><div class="info"><h5>落地案例精选</h5><p>成功搭建展台合集 →</p></div></div><div class="mega-link-item" onclick="location.href='case.html'"><i class="fas fa-th-large" style="font-size:1.5rem; color:#1e4a6e;"></i><div class="info"><h5>全部案例</h5><p>查看所有设计作品 →</p></div></div></div>
+                </div>
+            </li>
+            <li class="nav-item has-mega">
+                <a href="about.html">了解我们 <i class="fas fa-chevron-down"></i></a>
+                <div class="mega-menu" style="width: 420px;">
+                    <div style="display: flex; gap: 24px;">
+                        <img src="https://picsum.photos/id/104/120/120" style="border-radius: 16px; width: 100px; height: 100px; object-fit: cover;">
+                        <div>
+                            <h4 style="color:#1e4a6e;">厦门荣晟通展览</h4>
+                            <p style="font-size: 0.8rem; margin: 8px 0;">专注展览行业15年，为5000+企业提供展台设计、搭建一站式服务。</p>
+                            <div class="mega-link-item" onclick="location.href='about.html'" style="padding-left:0;"><span>公司简介 →</span></div>
+                            <div class="mega-link-item" onclick="location.href='about.html'" style="padding-left:0;"><span>资质荣誉 →</span></div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li class="nav-item has-mega">
+                <a href="expo.html">展会信息 <i class="fas fa-chevron-down"></i></a>
+                <div class="mega-menu" style="width: 420px;">
+                    <!-- 展会信息下拉菜单内容，可简化或保留 -->
+                </div>
+            </li>
+            <li class="nav-item"><a href="contact.html">联系我们</a></li>
+        </ul>
+    </div>
+</header>
+
+<div class="container detail-container" id="detailContent">
+    <div class="loading">加载中...</div>
+</div>
+
+<!-- 灯箱结构 -->
+<div id="lightbox" class="lightbox">
+    <button class="lightbox-close"><i class="fas fa-times"></i></button>
+    <button class="lightbox-prev"><i class="fas fa-chevron-left"></i></button>
+    <img class="lightbox-img" alt="放大图片">
+    <button class="lightbox-next"><i class="fas fa-chevron-right"></i></button>
+</div>
+
+<footer class="footer">
+    <div class="container footer-grid">
+        <div><h4>厦门荣晟通展览</h4><p>展台设计/搭建/活动策划<br>咨询热线：13859987737</p></div>
+        <div><h4>快速链接</h4><a href="index.html">首页</a><br><a href="case.html">展台案例</a><br><a href="about.html">关于我们</a><br><a href="expo.html">展会排期</a><br><a href="contact.html">联系我们</a></div>
+        <div><h4>关注我们</h4><p><i class="fab fa-weixin"></i> 官方微信</p><img src="images/wechat_QR.jpg" style="width:80px; border-radius:8px;"></div>
+    </div>
+    <div class="container" style="text-align:center; margin-top:32px; border-top:1px solid #2c4b64; padding-top:20px;">© 2025 厦门荣晟通展览公司 版权所有</div>
+</footer>
+
+<script src="common.js"></script>
+<script>
+    // 案例数据
+    const allCases = [
+        { id: 1, category: "medical", size: "medium", built: false, img: "images/case/case1-1.jpg", title: "海之林 · 上海制药机械展", desc: "科技感流线型设计，面积99㎡" },
+        { id: 2, category: "tech", size: "medium", built: false, img: "images/case/case2-1.jpg", title: "超强伟业 · 深圳焊接与切割展", desc: "简约科技感，打造智能体验空间，面积72㎡" },
+        { id: 3, category: "beauty", size: "small", built: true, img: "images/case/case3-1.jpg", title: "齐裕包装 · CBE中国美容博览会", desc: "简约现代风，国际感设计，面积33㎡" },
+        { id: 4, category: "daily_goods", size: "small", built: false, img: "images/case/case4-1.jpg", title: "天羿工贸 · 中国日用百货商品交易会", desc: "配色清新，增强视觉活力，面积36㎡" },
+        { id: 5, category: "beauty", size: "small", built: true, img: "images/case/case5-1.jpg", title: "易可美 · 上海美博会", desc: "简约小展台，面积18㎡" },
+        { id: 6, category: "medical", size: "small", built: false, img: "images/case/case6-1.jpg", title: "甘肃骏茂 · 世界制药原料中国展", desc: "绿色健康主题，面积36㎡" },
+        { id: 7, category: "tech", size: "large", built: false, img: "images/case/case7-1.jpg", title: "鑫全利 · 埃森焊接与切割展", desc: "科技大展台，面积180㎡" },
+        { id: 8, category: "tech", size: "medium", built: false, img: "images/case/case8-1.jpg", title: "汇川技术 · 中国青岛国际工业自动化技术及装备展", desc: "双色搭配，合展设计，面积72㎡" },
+        // { id: 9, category: "tech", size: "small", built: true, title: "某科技公司 · 36㎡展台", desc: "小面积也能出彩，功能分区合理，面积36㎡" },
+        // { id: 10, category: "medical", size: "medium", built: false, title: "某医疗企业 · 150㎡展台", desc: "紧凑布局，展示空间最大化，面积150㎡" },
+        // { id: 11, category: "daily_goods", size: "large", built: true, title: "某汽车品牌 · 600㎡展台", desc: "双层结构，品牌形象突出，面积600㎡" },
+        // { id: 12, category: "tech", size: "large", built: true, title: "某科技巨头 · 800㎡展台", desc: "沉浸式体验，科技感十足，面积800㎡" }
+    ];
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const caseId = parseInt(urlParams.get('id'));
+    const caseData = allCases.find(c => c.id === caseId);
+
+    if (!caseData) {
+        document.getElementById('detailContent').innerHTML = '<div class="loading">案例不存在，请返回列表页。</div>';
+    } else {
+        const basePath = 'images/case/';
+        const mainImgPath = `${basePath}case${caseId}-1.jpg`;
+        const galleryImages = [];
+        for (let i = 2; i <= 8; i++) {
+            galleryImages.push(`${basePath}case${caseId}-${i}.jpg`);
+        }
+
+        const sizeText = caseData.size === 'small' ? '≤40㎡' : (caseData.size === 'medium' ? '40-80㎡' : '≥80㎡');
+        const builtBadge = caseData.built ? '<span class="case-badge built-badge" style="background:#c73b2b; color:white; margin-left:10px;"> ⭐落地案例&nbsp </span>' : '';
+
+        let galleryHtml = '';
+        galleryImages.forEach((imgPath, idx) => {
+            const imageNumber = idx + 2;
+            galleryHtml += `
+                <div class="gallery-item" style="display: none;" data-src="${imgPath}">
+                    <img src="${imgPath}" alt="案例图片 ${imageNumber}" onerror="this.parentElement.style.display='none'" onload="this.parentElement.style.display='block'">
+                </div>
+            `;
+        });
+
+        const detailHtml = `
+            <div class="detail-title">${caseData.title}${builtBadge}</div>
+            <div class="detail-sub">${caseData.desc}</div>
+            <img class="main-img" src="${mainImgPath}" alt="${caseData.title}" onerror="this.src='https://picsum.photos/id/20/800/400'; this.onerror=null;">
+            <div class="detail-info">
+                <p><strong>展台面积：</strong>${sizeText}</p>
+                <p><strong>案例类型：</strong>${caseData.category === 'tech' ? '科技电子/机械设备' : (caseData.category === 'beauty' ? '美容美妆' : (caseData.category === 'daily_goods' ? '日用礼品' : '医疗器械'))}</p>
+                <p><strong>落地案例：</strong>${caseData.built ? '是' : '否'}</p>
+            </div>
+            <div class="detail-desc">
+                <strong>案例介绍：</strong><br>
+                ${caseData.title} 展台设计充分体现了品牌特色，结合现代展示技术，为参展商带来优质的参展体验。如需更详细的案例资料，欢迎联系我们。
+            </div>
+            <div class="gallery" id="galleryContainer">
+                ${galleryHtml}
+            </div>
+            <button class="btn-primary" onclick="location.href='contact.html'">获取报价</button>
+            <div><a href="case.html" class="back-link">← 返回案例列表</a></div>
+        `;
+
+        document.getElementById('detailContent').innerHTML = detailHtml;
+
+        // 绑定灯箱功能
+        function initLightbox() {
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = lightbox.querySelector('.lightbox-img');
+            const closeBtn = lightbox.querySelector('.lightbox-close');
+            const prevBtn = lightbox.querySelector('.lightbox-prev');
+            const nextBtn = lightbox.querySelector('.lightbox-next');
+
+            // 收集所有案例图片（主图 + gallery 中实际存在的图片）
+            function getAllImageUrls() {
+                const urls = [];
+                const main = document.querySelector('.main-img');
+                if (main && main.src && !main.src.includes('picsum.photos')) {
+                    urls.push(main.src);
+                } else if (main && main.src) {
+                    // 如果主图是 picsum 占位图，也可加入，但不强制
+                    urls.push(main.src);
+                }
+                document.querySelectorAll('.gallery img').forEach(img => {
+                    if (img.src && img.parentElement.style.display !== 'none') {
+                        urls.push(img.src);
+                    }
+                });
+                return urls;
+            }
+
+            let currentIndex = 0;
+            let imageList = [];
+
+            function openLightbox(index) {
+                imageList = getAllImageUrls();
+                if (imageList.length === 0) return;
+                currentIndex = Math.min(Math.max(index, 0), imageList.length - 1);
+                lightboxImg.src = imageList[currentIndex];
+                lightbox.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+
+            function closeLightbox() {
+                lightbox.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+
+            function nextImage() {
+                if (imageList.length === 0) return;
+                currentIndex = (currentIndex + 1) % imageList.length;
+                lightboxImg.src = imageList[currentIndex];
+            }
+
+            function prevImage() {
+                if (imageList.length === 0) return;
+                currentIndex = (currentIndex - 1 + imageList.length) % imageList.length;
+                lightboxImg.src = imageList[currentIndex];
+            }
+
+            // 为图片添加点击事件（事件委托，因为图片可能动态加载）
+            document.getElementById('detailContent').addEventListener('click', (e) => {
+                let target = e.target;
+                if (target.tagName === 'IMG') {
+                    // 确保点击的是主图或 gallery 中的图片
+                    if (target.classList.contains('main-img') || target.closest('.gallery')) {
+                        e.preventDefault();
+                        // 找到当前图片在列表中的索引
+                        const allImgs = Array.from(document.querySelectorAll('.main-img, .gallery img')).filter(img => img.parentElement.style.display !== 'none');
+                        const idx = allImgs.findIndex(img => img === target);
+                        if (idx !== -1) {
+                            openLightbox(idx);
+                        }
+                    }
+                }
+            });
+
+            closeBtn.addEventListener('click', closeLightbox);
+            nextBtn.addEventListener('click', nextImage);
+            prevBtn.addEventListener('click', prevImage);
+            lightbox.addEventListener('click', (e) => {
+                if (e.target === lightbox) closeLightbox();
+            });
+            document.addEventListener('keydown', (e) => {
+                if (!lightbox.classList.contains('active')) return;
+                if (e.key === 'Escape') closeLightbox();
+                if (e.key === 'ArrowRight') nextImage();
+                if (e.key === 'ArrowLeft') prevImage();
+            });
+        }
+
+        // 等待图片完全加载后初始化灯箱（避免 gallery 中 onload 异步影响）
+        setTimeout(initLightbox, 100);
+    }
+</script>
+</body>
+</html>
