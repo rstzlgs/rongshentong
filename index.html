@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-    <title>厦门荣晟通展览 | 全球展览设计搭建专家</title>
+    <title>荣晟通展览公司 | 展览设计搭建专家</title>
     <!-- 引入 Google Fonts & Font Awesome & Swiper -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -11,7 +11,6 @@
     <!-- 引入公共样式（包含导航栏、页脚等） -->
     <link rel="stylesheet" href="common.css">
     <style>
-        
         /* 轮播图 */
         .swiper {
             width: 100%;
@@ -156,29 +155,7 @@
             margin-bottom: 8px;
         }
 
-        /* 页脚 */
-        .footer {
-            background: #0f2a3b;
-            color: #ccdee9;
-            padding: 48px 0 24px;
-            margin-top: 60px;
-        }
-        .footer-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 40px;
-        }
-        .footer a {
-            color: #bdd4e2;
-            text-decoration: none;
-            font-size: 0.85rem;
-            cursor: pointer;
-            display: inline-block;
-            margin: 5px 0;
-        }
-        .footer a:hover {
-            color: white;
-        }
+        /* 注意：页脚样式已移至 common.css，此处不再重复定义 */
 
         @media (max-width: 1024px) {
             .mega-menu {
@@ -255,13 +232,15 @@
 </head>
 <body>
 
-
 <!-- 主导航栏 (单层 + 巨型下拉) -->
 <header class="main-navbar">
     <div class="container nav-container">
-        <div class="logo-area">
-            <div class="logo-text" onclick="location.href='index.html'">厦门荣晟通展览</div>
-            <div class="logo-sub">RONGCHENG EXPO · 展台设计搭建专家</div>
+        <div class="logo-area" style="display: flex !important; flex-direction: row !important; align-items: center; gap: 12px; flex-wrap: nowrap;">
+            <img src="images/logo.jpg" alt="荣晟通展览" style="height: 45px; width: auto; flex-shrink: 0;">
+            <div>
+                <div class="logo-text" style="background: linear-gradient(135deg, #499FC7, #2A5997); background-clip: text; -webkit-background-clip: text; color: transparent;" onclick="location.href='index.html'">荣晟通展览公司</div>
+                <div class="logo-sub">RONGSHENGTONG EXPO · 展台设计搭建专家</div>
+            </div>
         </div>
         <button class="mobile-toggle" id="mobileToggle"><i class="fas fa-bars"></i></button>
         <ul class="nav-menu" id="navMenu">
@@ -272,47 +251,10 @@
             <li class="nav-item has-mega">
                 <a href="case.html">展台案例 <i class="fas fa-chevron-down"></i></a>
                 <div class="mega-menu">
-                    <!-- 行业案例区块 -->
-                    <div class="mega-section">
-                        <h4>行业案例</h4>
-                        <div class="mega-links">
-                            <div class="mega-link-item" onclick="location.href='case.html?category=tech'">
-                                <img src="https://picsum.photos/id/0/50/50" alt="科技"><div class="info"><h5>科技电子展台</h5><p>华为/大疆展台设计</p></div>
-                            </div>
-                            <div class="mega-link-item" onclick="location.href='case.html?category=medical'">
-                                <img src="https://picsum.photos/id/20/50/50" alt="医疗"><div class="info"><h5>医疗健康展台</h5><p>进博会医疗展区标杆</p></div>
-                            </div>
-                            <div class="mega-link-item" onclick="location.href='case.html?category=auto'">
-                                <img src="https://picsum.photos/id/91/50/50" alt="汽车"><div class="info"><h5>汽车工业展台</h5><p>比亚迪/宁德时代案例</p></div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- 按展台规模区块 -->
-                    <div class="mega-section">
-                        <h4>按展台规模</h4>
-                        <div class="mega-links">
-                            <div class="mega-link-item" onclick="location.href='case.html?size=small'">
-                                <img src="https://picsum.photos/id/26/50/50" alt="小型"><div class="info"><h5>36㎡-100㎡精品展台</h5><p>轻巧灵动高性价比</p></div>
-                            </div>
-                            <div class="mega-link-item" onclick="location.href='case.html?size=medium'">
-                                <img src="https://picsum.photos/id/42/50/50" alt="中型"><div class="info"><h5>100㎡-300㎡特装展台</h5><p>创意与功能融合</p></div>
-                            </div>
-                            <div class="mega-link-item" onclick="location.href='case.html?size=large'">
-                                <img src="https://picsum.photos/id/58/50/50" alt="大型"><div class="info"><h5>300㎡+ 大型展位</h5><p>品牌地标级展台</p></div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- 底部公司链接（左对齐） -->
-                    <div class="mega-company">
-                        <div class="mega-link-item" onclick="location.href='case.html?featured=true'">
-                            <i class="fas fa-star" style="font-size:1.5rem; color:#c73b2b;"></i>
-                            <div class="info"><h5>优秀案例精选</h5><p>历年获奖展台合集 →</p></div>
-                        </div>
-                        <div class="mega-link-item" onclick="location.href='case.html'">
-                            <i class="fas fa-th-large" style="font-size:1.5rem; color:#1e4a6e;"></i>
-                            <div class="info"><h5>全部案例</h5><p>查看所有设计作品 →</p></div>
-                        </div>
-                    </div>
+                    <!-- 下拉菜单内容同之前，此处略 -->
+                    <div class="mega-section"><h4>行业案例</h4><div class="mega-links"><div class="mega-link-item" onclick="location.href='case.html?category=tech'"><img src="images/case/case1-1.jpg" alt="科技"><div class="info"><h5>科技电子展台</h5><p>科技/机械设备展台设计</p></div></div><div class="mega-link-item" onclick="location.href='case.html?category=medical'"><img src="images/case/case5-1.jpg" alt="医疗"><div class="info"><h5>美容美妆展台</h5><p>美容/医疗健康展台设计搭建</p></div></div><div class="mega-link-item" onclick="location.href='case.html?category=auto'"><img src="images/case/case4-1.jpg" alt="日用礼品"><div class="info"><h5>日用礼品台</h5><p>日用品小展台设计</p></div></div></div></div>
+                    <div class="mega-section"><h4>按展台规模</h4><div class="mega-links"><div class="mega-link-item" onclick="location.href='case.html?size=small'"><img src="images/case/case3-1.jpg" alt="小型"><div class="info"><h5>9㎡-36㎡精品展台</h5><p>轻巧灵动高性价比</p></div></div><div class="mega-link-item" onclick="location.href='case.html?size=medium'"><img src="images/case/case2-1.jpg" alt="中型"><div class="info"><h5>36㎡-72㎡特装展台</h5><p>创意与功能融合</p></div></div><div class="mega-link-item" onclick="location.href='case.html?size=large'"><img src="images/case/case7-1.jpg" alt="大型"><div class="info"><h5>80㎡+ 大型展位</h5><p>品牌地标级展台</p></div></div></div></div>
+                    <div class="mega-company"><div class="mega-link-item" onclick="location.href='case.html?built=true'"><i class="fas fa-star" style="font-size:1.5rem; color:#c73b2b;"></i><div class="info"><h5>落地案例精选</h5><p>成功搭建展台合集 →</p></div></div><div class="mega-link-item" onclick="location.href='case.html'"><i class="fas fa-th-large" style="font-size:1.5rem; color:#1e4a6e;"></i><div class="info"><h5>全部案例</h5><p>查看所有设计作品 →</p></div></div></div>
                 </div>
             </li>
 
@@ -324,7 +266,7 @@
                         <img src="https://picsum.photos/id/104/120/120" style="border-radius: 16px; width: 100px; height: 100px; object-fit: cover;">
                         <div>
                             <h4 style="color:#1e4a6e;">厦门荣晟通展览</h4>
-                            <p style="font-size: 0.8rem; margin: 8px 0;">专注展览行业15年，为5000+企业提供展台设计、搭建一站式服务，进博会推荐搭建商。</p>
+                            <p style="font-size: 0.8rem; margin: 8px 0;">专注展览行业15年，为500+企业提供展台设计、搭建一站式服务，在全国多地拥有合作搭建商。</p>
                             <div class="mega-link-item" onclick="location.href='about.html'" style="padding-left:0;"><span>公司简介 →</span></div>
                             <div class="mega-link-item" onclick="location.href='about.html'" style="padding-left:0;"><span>资质荣誉 →</span></div>
                         </div>
@@ -363,8 +305,8 @@
 <!-- 轮播图 -->
 <div class="swiper mySwiper">
     <div class="swiper-wrapper">
-        <div class="swiper-slide" style="background-image: url('https://picsum.photos/id/20/1600/600');"><div class="slide-caption"><h2>专业展台设计搭建</h2><p>从创意到落地，一站式服务</p><button class="btn-primary" onclick="location.href='contact.html'">获取报价</button></div></div>
-        <div class="swiper-slide" style="background-image: url('https://picsum.photos/id/48/1600/600');"><div class="slide-caption"><h2>助力企业品牌出海</h2><p>全球展览一站式运营</p><button class="btn-primary" onclick="location.href='case.html'">查看案例</button></div></div>
+        <div class="swiper-slide" style="background-image: url('images/lbt1.jpg');"><div class="slide-caption"><h2>专业展台设计搭建</h2><p>从创意到落地，一站式服务</p><button class="btn-primary" onclick="location.href='contact.html'">获取报价</button></div></div>
+        <div class="swiper-slide" style="background-image: url('images/lbt2.jpg');"><div class="slide-caption"><h2>服务全国各大展会</h2><p>全国范围，快速响应，品质保障</p><button class="btn-primary" onclick="location.href='case.html'">查看案例</button></div></div>
     </div>
     <div class="swiper-pagination"></div>
     <div class="swiper-button-next"></div>
@@ -382,17 +324,17 @@
     <div class="container">
         <div class="section-title"><h3>选择荣晟通的理由</h3><small>专业团队 · 匠心品质 · 全程服务</small></div>
         <div class="features-grid">
-            <div><div class="feature-icon"><i class="fas fa-certificate"></i></div><h5>进博会推荐服务商</h5><p>官方认可搭建资质</p></div>
-            <div><div class="feature-icon"><i class="fas fa-chart-line"></i></div><h5>40万+㎡搭建经验</h5><p>服务全球500强企业</p></div>
-            <div><div class="feature-icon"><i class="fas fa-globe-asia"></i></div><h5>300+城市覆盖</h5><p>全国服务网络</p></div>
-            <div><div class="feature-icon"><i class="fas fa-palette"></i></div><h5>100+资深设计师</h5><p>创意驱动展台效果</p></div>
-            <div><div class="feature-icon"><i class="fas fa-headset"></i></div><h5>一站式管家服务</h5><p>设计/搭建/物流/售后</p></div>
+            <div><div class="feature-icon"><i class="fas fa-certificate"></i></div><h5>设有制作搭建工厂</h5><p>官方认可搭建资质</p></div>
+            <div><div class="feature-icon"><i class="fas fa-chart-line"></i></div><h5>10万+㎡搭建经验</h5><p>服务全国多家企业</p></div>
+            <div><div class="feature-icon"><i class="fas fa-globe-asia"></i></div><h5>100+城市覆盖</h5><p>全国服务网络</p></div>
+            <div><div class="feature-icon"><i class="fas fa-palette"></i></div><h5>20+资深设计师</h5><p>创意驱动展台效果</p></div>
+            <div><div class="feature-icon"><i class="fas fa-headset"></i></div><h5>一站式服务</h5><p>设计/搭建/物流/售后</p></div>
         </div>
     </div>
 </div>
 
 <!-- 客户好评（保持不变） -->
-<div class="testimonial-slider">
+<!-- <div class="testimonial-slider">
     <div class="container">
         <div class="section-title"><h3>客户好评</h3><small>来自合作伙伴的真实反馈</small></div>
         <div class="swiper testimonialSwiper">
@@ -404,7 +346,7 @@
             <div class="swiper-pagination"></div>
         </div>
     </div>
-</div>
+</div> -->
 
 <!-- 展会资讯列表 (全国各地展会) -->
 <div class="container">
@@ -415,9 +357,9 @@
 <!-- 页脚 -->
 <footer class="footer">
     <div class="container footer-grid">
-        <div><h4>厦门荣晟通展览</h4><p>展台设计/搭建/活动策划<br>咨询热线：400-6688-321</p></div>
+        <div><h4>厦门荣晟通展览</h4><p>展台设计/搭建/活动策划<br>咨询热线：13859987737</p></div>
         <div><h4>快速链接</h4><a href="index.html">首页</a><br><a href="case.html">展台案例</a><br><a href="about.html">关于我们</a><br><a href="expo.html">展会排期</a><br><a href="contact.html">联系我们</a></div>
-        <div><h4>关注我们</h4><p><i class="fab fa-weixin"></i> 官方微信</p><img src="https://picsum.photos/id/20/100/80" style="width:80px; border-radius:8px;"></div>
+        <div><h4>关注我们</h4><p><i class="fab fa-weixin"></i> 官方微信</p><img src="images/wechat_QR.jpg" style="width:80px; border-radius:8px;"></div>
     </div>
     <div class="container" style="text-align:center; margin-top:32px; border-top:1px solid #2c4b64; padding-top:20px;">© 2025 厦门荣晟通展览公司 版权所有</div>
 </footer>
@@ -425,18 +367,18 @@
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script src="common.js"></script>
 <script>
-    // 案例数据
+    // 案例数据：与 case.html 中的前四个案例保持一致
     const cases = [
-        { img: "https://picsum.photos/id/30/400/240", title: "华为 · 巴塞罗那MWC展台", desc: "科技感线条+互动体验，面积200㎡", type: "科技" },
-        { img: "https://picsum.photos/id/91/400/240", title: "比亚迪 · 北京车展", desc: "新能源生态展台，面积360㎡", type: "汽车" },
-        { img: "https://picsum.photos/id/58/400/240", title: "迈瑞医疗 · CMEF", desc: "简约医疗风，国际感设计", type: "医疗" },
-        { img: "https://picsum.photos/id/96/400/240", title: "茅台 · 糖酒会", desc: "东方美学展台，文化融合", type: "消费品" }
+        { id: 1, img: "images/case/case1-1.jpg", title: "海之林 · 上海制药机械展", desc: "科技感流线型设计，面积99㎡" },
+        { id: 2, img: "images/case/case2-1.jpg", title: "超强伟业 · 深圳焊接与切割展", desc: "简约科技感，打造智能体验空间，面积72㎡" },
+        { id: 3, img: "images/case/case3-1.jpg", title: "齐裕包装 · CBE中国美容博览会", desc: "简约现代风，国际感设计，面积33㎡" },
+        { id: 4, img: "images/case/case4-1.jpg", title: "天羿工贸 · 中国日用百货商品交易会", desc: "配色清新，增强视觉活力，面积36㎡" }
     ];
     function renderCases() {
         const grid = document.getElementById("caseGrid");
         if(grid) grid.innerHTML = cases.map(c => `
-            <div class="case-card" onclick="location.href='case.html'">
-                <div class="case-img" style="background-image: url('${c.img}');"></div>
+            <div class="case-card" onclick="location.href='case-detail.html?id=${c.id}'">
+                <div class="case-img watermark" style="background-image: url('${c.img}');"></div>
                 <div class="case-info"><h4>${c.title}</h4><p>${c.desc}</p></div>
             </div>
         `).join('');
@@ -461,15 +403,13 @@
         `).join('');
     }
 
-   
-
     // 轮播图初始化
     new Swiper('.mySwiper', { loop: true, autoplay: { delay: 4000 }, pagination: { el: '.swiper-pagination' }, navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' } });
     new Swiper('.testimonialSwiper', { loop: true, autoplay: { delay: 3000 }, slidesPerView: 1, spaceBetween: 30, breakpoints: { 768: { slidesPerView: 2 } }, pagination: { el: '.swiper-pagination', clickable: true } });
 
     renderCases();
     renderExpoNews();
-    initMobile();
+    // 移动端菜单初始化已在 common.js 中完成，无需重复调用
 </script>
 </body>
 </html>
