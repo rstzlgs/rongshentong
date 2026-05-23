@@ -18,10 +18,14 @@
             color: #1e4a6e;
         }
         .contact-wrapper {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            margin: 40px 0;
+            max-width: 800px;
+            margin: 40px auto;
+        }
+        .contact-info {
+            background: #f8fafc;
+            padding: 40px;
+            border-radius: 24px;
+            text-align: center;
         }
         .contact-info h3 {
             font-size: 1.5rem;
@@ -32,6 +36,7 @@
             margin-bottom: 16px;
             display: flex;
             align-items: center;
+            justify-content: center;
             gap: 12px;
         }
         .contact-info i {
@@ -39,57 +44,22 @@
             color: #c73b2b;
             font-size: 1.2rem;
         }
-        .contact-form h3 {
-            font-size: 1.5rem;
-            margin-bottom: 24px;
-            color: #1e4a6e;
+        .qr-code {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #eef2f8;
         }
-        .form-group {
-            margin-bottom: 20px;
-        }
-        .form-group input, .form-group textarea {
-            width: 100%;
-            padding: 14px 18px;
-            border: 1px solid #eef2f8;
+        .qr-code img {
+            width: 120px;
             border-radius: 12px;
-            font-family: inherit;
-            font-size: 0.9rem;
-            transition: 0.2s;
-        }
-        .form-group input:focus, .form-group textarea:focus {
-            outline: none;
-            border-color: #c73b2b;
-        }
-        .form-group textarea {
-            resize: vertical;
-            min-height: 120px;
-        }
-        .submit-btn {
-            background: #c73b2b;
-            color: white;
-            border: none;
-            padding: 14px 28px;
-            border-radius: 40px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: 0.2s;
-            font-size: 1rem;
-        }
-        .submit-btn:hover {
-            background: #a02e20;
-        }
-        .map {
-            margin-top: 60px;
-            border-radius: 20px;
-            overflow: hidden;
+            margin-top: 10px;
         }
         @media (max-width: 900px) {
-            .contact-wrapper {
-                grid-template-columns: 1fr;
-                gap: 40px;
-            }
             .page-title h1 {
                 font-size: 1.8rem;
+            }
+            .contact-info {
+                padding: 30px 20px;
             }
         }
     </style>
@@ -99,9 +69,12 @@
 <!-- 统一导航栏（与首页完全相同） -->
 <header class="main-navbar">
     <div class="container nav-container">
-        <div class="logo-area">
-            <div class="logo-text" onclick="location.href='index.html'">厦门荣晟通展览</div>
-            <div class="logo-sub">RONGCHENG EXPO · 展台设计搭建专家</div>
+        <div class="logo-area" style="display: flex !important; flex-direction: row !important; align-items: center; gap: 12px; flex-wrap: nowrap;">
+            <img src="images/logo.jpg" alt="荣晟通展览" style="height: 45px; width: auto; flex-shrink: 0;">
+            <div>
+                <div class="logo-text" style="background: linear-gradient(135deg, #499FC7, #2A5997); background-clip: text; -webkit-background-clip: text; color: transparent;" onclick="location.href='index.html'">荣晟通展览公司</div>
+                <div class="logo-sub">RONGSHENGTONG EXPO · 展台设计搭建专家</div>
+            </div>
         </div>
         <button class="mobile-toggle" id="mobileToggle"><i class="fas fa-bars"></i></button>
         <ul class="nav-menu" id="navMenu">
@@ -109,26 +82,10 @@
             <li class="nav-item has-mega">
                 <a href="case.html">展台案例 <i class="fas fa-chevron-down"></i></a>
                 <div class="mega-menu">
-                    <div class="mega-section">
-                        <h4>行业案例</h4>
-                        <div class="mega-links">
-                            <div class="mega-link-item" onclick="location.href='case.html?category=tech'"><img src="https://picsum.photos/id/0/50/50" alt="科技"><div class="info"><h5>科技电子展台</h5><p>华为/大疆展台设计</p></div></div>
-                            <div class="mega-link-item" onclick="location.href='case.html?category=medical'"><img src="https://picsum.photos/id/20/50/50" alt="医疗"><div class="info"><h5>医疗健康展台</h5><p>进博会医疗展区标杆</p></div></div>
-                            <div class="mega-link-item" onclick="location.href='case.html?category=auto'"><img src="https://picsum.photos/id/91/50/50" alt="汽车"><div class="info"><h5>汽车工业展台</h5><p>比亚迪/宁德时代案例</p></div></div>
-                        </div>
-                    </div>
-                    <div class="mega-section">
-                        <h4>按展台规模</h4>
-                        <div class="mega-links">
-                            <div class="mega-link-item" onclick="location.href='case.html?size=small'"><img src="https://picsum.photos/id/26/50/50" alt="小型"><div class="info"><h5>36㎡-100㎡精品展台</h5><p>轻巧灵动高性价比</p></div></div>
-                            <div class="mega-link-item" onclick="location.href='case.html?size=medium'"><img src="https://picsum.photos/id/42/50/50" alt="中型"><div class="info"><h5>100㎡-300㎡特装展台</h5><p>创意与功能融合</p></div></div>
-                            <div class="mega-link-item" onclick="location.href='case.html?size=large'"><img src="https://picsum.photos/id/58/50/50" alt="大型"><div class="info"><h5>300㎡+ 大型展位</h5><p>品牌地标级展台</p></div></div>
-                        </div>
-                    </div>
-                    <div class="mega-company">
-                        <div class="mega-link-item" onclick="location.href='case.html?featured=true'"><i class="fas fa-star" style="font-size:1.5rem; color:#c73b2b;"></i><div class="info"><h5>优秀案例精选</h5><p>历年获奖展台合集 →</p></div></div>
-                        <div class="mega-link-item" onclick="location.href='case.html'"><i class="fas fa-th-large" style="font-size:1.5rem; color:#1e4a6e;"></i><div class="info"><h5>全部案例</h5><p>查看所有设计作品 →</p></div></div>
-                    </div>
+                    <!-- 下拉菜单内容同之前，此处略 -->
+                    <div class="mega-section"><h4>行业案例</h4><div class="mega-links"><div class="mega-link-item" onclick="location.href='case.html?category=tech'"><img src="images/case/case1-1.jpg" alt="科技"><div class="info"><h5>科技电子展台</h5><p>科技/机械设备展台设计</p></div></div><div class="mega-link-item" onclick="location.href='case.html?category=medical'"><img src="images/case/case5-1.jpg" alt="医疗"><div class="info"><h5>美容美妆展台</h5><p>美容/医疗健康展台设计搭建</p></div></div><div class="mega-link-item" onclick="location.href='case.html?category=auto'"><img src="images/case/case4-1.jpg" alt="日用礼品"><div class="info"><h5>日用礼品台</h5><p>日用品小展台设计</p></div></div></div></div>
+                    <div class="mega-section"><h4>按展台规模</h4><div class="mega-links"><div class="mega-link-item" onclick="location.href='case.html?size=small'"><img src="images/case/case3-1.jpg" alt="小型"><div class="info"><h5>9㎡-36㎡精品展台</h5><p>轻巧灵动高性价比</p></div></div><div class="mega-link-item" onclick="location.href='case.html?size=medium'"><img src="images/case/case2-1.jpg" alt="中型"><div class="info"><h5>36㎡-72㎡特装展台</h5><p>创意与功能融合</p></div></div><div class="mega-link-item" onclick="location.href='case.html?size=large'"><img src="images/case/case7-1.jpg" alt="大型"><div class="info"><h5>80㎡+ 大型展位</h5><p>品牌地标级展台</p></div></div></div></div>
+                    <div class="mega-company"><div class="mega-link-item" onclick="location.href='case.html?built=true'"><i class="fas fa-star" style="font-size:1.5rem; color:#c73b2b;"></i><div class="info"><h5>落地案例精选</h5><p>成功搭建展台合集 →</p></div></div><div class="mega-link-item" onclick="location.href='case.html'"><i class="fas fa-th-large" style="font-size:1.5rem; color:#1e4a6e;"></i><div class="info"><h5>全部案例</h5><p>查看所有设计作品 →</p></div></div></div>
                 </div>
             </li>
             <li class="nav-item has-mega">
@@ -180,45 +137,24 @@
     <div class="contact-wrapper">
         <div class="contact-info">
             <h3>联系方式</h3>
-            <p><i class="fas fa-phone-alt"></i> 全国咨询热线：400-6688-321</p>
-            <p><i class="fas fa-envelope"></i> 邮箱：info@rongcheng-expo.com</p>
-            <p><i class="fas fa-map-marker-alt"></i> 地址：厦门市思明区会展南路88号</p>
-            <p><i class="fas fa-clock"></i> 工作时间：周一至周五 9:00-18:00</p>
-            <div style="margin-top: 30px;">
+            <p><i class="fas fa-phone-alt"></i> 咨询热线：13859987737</p>
+            <p><i class="fas fa-envelope"></i> 邮箱：906140587@qq.com</p>
+            <p><i class="fas fa-map-marker-alt"></i> 地址：厦门市湖里区红豆杉科技大厦A栋208</p>
+            <p><i class="fas fa-clock"></i> 工作时间：工作日 9:00-18:00</p>
+            <div class="qr-code">
                 <h3>官方微信</h3>
-                <img src="https://picsum.photos/id/20/150/150" style="width: 120px; border-radius: 12px; margin-top: 10px;">
-                <p style="margin-top: 10px;">扫一扫，添加顾问微信</p>
+                <img src="images/wechat_QR.jpg" alt="微信二维码">
+                <p>扫一扫，添加顾问微信</p>
             </div>
         </div>
-        <div class="contact-form">
-            <h3>在线留言</h3>
-            <form id="contactForm">
-                <div class="form-group">
-                    <input type="text" placeholder="您的姓名" required>
-                </div>
-                <div class="form-group">
-                    <input type="tel" placeholder="联系电话" required>
-                </div>
-                <div class="form-group">
-                    <input type="email" placeholder="电子邮箱">
-                </div>
-                <div class="form-group">
-                    <textarea placeholder="留言内容"></textarea>
-                </div>
-                <button type="button" class="submit-btn" onclick="alert('感谢留言，我们会尽快联系您！')">提交留言</button>
-            </form>
-        </div>
-    </div>
-    <div class="map">
-        <img src="https://picsum.photos/id/15/1400/300" style="width:100%; height:200px; object-fit:cover;" alt="地图">
     </div>
 </div>
 
 <footer class="footer">
     <div class="container footer-grid">
-        <div><h4>厦门荣晟通展览</h4><p>展台设计/搭建/活动策划<br>咨询热线：400-6688-321</p></div>
+        <div><h4>厦门荣晟通展览</h4><p>展台设计/搭建/活动策划<br>咨询热线：13859987737</p></div>
         <div><h4>快速链接</h4><a href="index.html">首页</a><br><a href="case.html">展台案例</a><br><a href="about.html">关于我们</a><br><a href="expo.html">展会排期</a><br><a href="contact.html">联系我们</a></div>
-        <div><h4>关注我们</h4><p><i class="fab fa-weixin"></i> 官方微信</p><img src="https://picsum.photos/id/20/100/80" style="width:80px; border-radius:8px;"></div>
+        <div><h4>关注我们</h4><p><i class="fab fa-weixin"></i> 官方微信</p><img src="images/wechat_QR.jpg" style="width:80px; border-radius:8px;"></div>
     </div>
     <div class="container" style="text-align:center; margin-top:32px; border-top:1px solid #2c4b64; padding-top:20px;">© 2025 厦门荣晟通展览公司 版权所有</div>
 </footer>
