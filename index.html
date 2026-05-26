@@ -155,7 +155,76 @@
             margin-bottom: 8px;
         }
 
-        /* 注意：页脚样式已移至 common.css，此处不再重复定义 */
+        /* ---------- 灯箱样式 ---------- */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        .lightbox.active {
+            display: flex;
+        }
+        .lightbox-img {
+            max-width: 90%;
+            max-height: 80%;
+            object-fit: contain;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
+        }
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 2rem;
+            color: white;
+            cursor: pointer;
+            background: none;
+            border: none;
+            z-index: 1001;
+        }
+        .lightbox-prev,
+        .lightbox-next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 2rem;
+            color: white;
+            background: rgba(0,0,0,0.5);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .lightbox-prev:hover,
+        .lightbox-next:hover {
+            background: rgba(0,0,0,0.8);
+        }
+        .lightbox-prev {
+            left: 20px;
+        }
+        .lightbox-next {
+            right: 20px;
+        }
+        @media (max-width: 768px) {
+            .lightbox-prev,
+            .lightbox-next {
+                width: 40px;
+                height: 40px;
+                font-size: 1.5rem;
+            }
+        }
 
         @media (max-width: 1024px) {
             .mega-menu {
@@ -251,10 +320,24 @@
             <li class="nav-item has-mega">
                 <a href="case.html">展台案例 <i class="fas fa-chevron-down"></i></a>
                 <div class="mega-menu">
-                    <!-- 下拉菜单内容同之前，此处略 -->
                     <div class="mega-section"><h4>行业案例</h4><div class="mega-links"><div class="mega-link-item" onclick="location.href='case.html?category=tech'"><img src="images/case/case1-1.jpg" alt="科技"><div class="info"><h5>科技电子展台</h5><p>科技/机械设备展台设计</p></div></div><div class="mega-link-item" onclick="location.href='case.html?category=medical'"><img src="images/case/case5-1.jpg" alt="医疗"><div class="info"><h5>美容美妆展台</h5><p>美容/医疗健康展台设计搭建</p></div></div><div class="mega-link-item" onclick="location.href='case.html?category=auto'"><img src="images/case/case4-1.jpg" alt="日用礼品"><div class="info"><h5>日用礼品台</h5><p>日用品小展台设计</p></div></div></div></div>
                     <div class="mega-section"><h4>按展台规模</h4><div class="mega-links"><div class="mega-link-item" onclick="location.href='case.html?size=small'"><img src="images/case/case3-1.jpg" alt="小型"><div class="info"><h5>9㎡-36㎡精品展台</h5><p>轻巧灵动高性价比</p></div></div><div class="mega-link-item" onclick="location.href='case.html?size=medium'"><img src="images/case/case2-1.jpg" alt="中型"><div class="info"><h5>36㎡-72㎡特装展台</h5><p>创意与功能融合</p></div></div><div class="mega-link-item" onclick="location.href='case.html?size=large'"><img src="images/case/case7-1.jpg" alt="大型"><div class="info"><h5>80㎡+ 大型展位</h5><p>品牌地标级展台</p></div></div></div></div>
-                    <div class="mega-company"><div class="mega-link-item" onclick="location.href='case.html?built=true'"><i class="fas fa-star" style="font-size:1.5rem; color:#c73b2b;"></i><div class="info"><h5>落地案例精选</h5><p>成功搭建展台合集 →</p></div></div><div class="mega-link-item" onclick="location.href='case.html'"><i class="fas fa-th-large" style="font-size:1.5rem; color:#1e4a6e;"></i><div class="info"><h5>全部案例</h5><p>查看所有设计作品 →</p></div></div></div>
+                    <div class="mega-company">
+                        <!-- <div class="mega-link-item" onclick="location.href='case.html?built=true'"><i class="fas fa-star"
+                                style="font-size:1.5rem; color:#c73b2b;"></i>
+                            <div class="info">
+                                <h5>落地案例精选</h5>
+                                <p>成功搭建展台合集 →</p>
+                            </div>
+                        </div> -->
+                        <div class="mega-link-item" onclick="location.href='case.html'"><i class="fas fa-th-large"
+                                style="font-size:1.5rem; color:#1e4a6e;"></i>
+                            <div class="info">
+                                <h5>全部案例</h5>
+                                <p>查看所有设计作品 →</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </li>
 
@@ -263,7 +346,7 @@
                 <a href="about.html">了解我们 <i class="fas fa-chevron-down"></i></a>
                 <div class="mega-menu">
                     <div style="display: flex; gap: 24px;">
-                        <img src="https://picsum.photos/id/104/120/120" style="border-radius: 16px; width: 100px; height: 100px; object-fit: cover;">
+                        <img loading="lazy" src="https://picsum.photos/id/104/120/120" style="border-radius: 16px; width: 100px; height: 100px; object-fit: cover;">
                         <div>
                             <h4 style="color:#1e4a6e;">厦门荣晟通展览</h4>
                             <p style="font-size: 0.8rem; margin: 8px 0;">专注展览行业15年，为500+企业提供展台设计、搭建一站式服务，在全国多地拥有合作搭建商。</p>
@@ -319,6 +402,18 @@
     <div class="case-grid" id="caseGrid"></div>
 </div>
 
+<!-- 新增：公司文化展厅设计案例 -->
+<div class="container">
+    <div class="section-title"><h3>公司文化展厅设计案例</h3><small>企业展厅 / 文化长廊 / 荣誉墙设计</small></div>
+    <div class="case-grid" id="hallGrid"></div>
+</div>
+
+<!-- 新增：扩展业务 · 文化墙案例 -->
+<div class="container">
+    <div class="section-title"><h3>文化墙案例</h3><small>企业文化墙 / 荣誉墙 / 展厅文化设计</small></div>
+    <div class="case-grid" id="whqGrid"></div>
+</div>
+
 <!-- 选择我们的理由 (5个核心点) -->
 <div class="feature-section">
     <div class="container">
@@ -364,6 +459,14 @@
     <div class="container" style="text-align:center; margin-top:32px; border-top:1px solid #2c4b64; padding-top:20px;">© 2025 厦门荣晟通展览公司 版权所有</div>
 </footer>
 
+<!-- 灯箱结构 -->
+<div id="lightbox" class="lightbox">
+    <button class="lightbox-close"><i class="fas fa-times"></i></button>
+    <button class="lightbox-prev"><i class="fas fa-chevron-left"></i></button>
+    <img class="lightbox-img" alt="放大图片">
+    <button class="lightbox-next"><i class="fas fa-chevron-right"></i></button>
+</div>
+
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script src="common.js"></script>
 <script>
@@ -384,10 +487,127 @@
         `).join('');
     }
 
+        // 公司文化展厅案例数据（根据图片命名规则，假设有3个案例，每个案例有2-5张图片）
+        // 此处定义封面图片路径和案例ID
+        const hallCases = [
+    { id: 1, img: "images/whq/whzt_case1-1.jpg", title: "企业展厅设计1", desc: "现代科技感，简约得体" },
+    { id: 2, img: "images/whq/whzt_case2-1.jpg", title: "企业展厅设计2", desc: "简约大气，体现企业人文关怀" },
+    { id: 3, img: "images/whq/whzt_case3-1.jpg", title: "企业展厅设计3", desc: "庄重典雅，彰显荣誉成就" },
+    { id: 4, img: "images/whq/whzt_case4-1.jpg", title: "企业展厅设计4", desc: "历史脉络清晰，现代展示手法" }
+];
+        function renderHallCases() {
+            const grid = document.getElementById("hallGrid");
+            if(grid) grid.innerHTML = hallCases.map(c => `
+                <div class="case-card" onclick="location.href='hall-detail.html?id=${c.id}'">
+                    <div class="case-img" data-src="${c.img}" style="background-size: cover; background-position: center;"></div>
+                    <div class="case-info"><h4>${c.title}</h4><p>${c.desc}</p></div>
+                </div>
+            `).join('');
+            // 为展厅案例卡片背景图实现懒加载
+            lazyLoadBackgroundImages('#hallGrid .case-img');
+        }
+
+
+    // 文化墙案例数据（与之前相同）
+        const whqImages = [];
+        for (let i = 1; i <= 4; i++) {
+            whqImages.push({ img: `images/whq/whq_case${i}.jpg`, title: `文化墙设计案例 ${i}`, desc: '企业文化墙设计，彰显品牌形象' });
+        }
+        function renderWhq() {
+            const grid = document.getElementById("whqGrid");
+            if(grid) grid.innerHTML = whqImages.map((item, idx) => `
+                <div class="case-card" data-img-src="${item.img}">
+                    <div class="case-img" data-src="${item.img}" style="background-size: cover; background-position: center;"></div>
+                    <div class="case-info"><h4>${item.title}</h4><p>${item.desc}</p></div>
+                </div>
+            `).join('');
+            // 为文化墙卡片添加点击放大事件（不跳转）
+            document.querySelectorAll('#whqGrid .case-card').forEach(card => {
+                card.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const imgUrl = card.getAttribute('data-img-src') || card.querySelector('.case-img')?.getAttribute('data-src');
+                    if (imgUrl) openLightboxWithImage(imgUrl);
+                });
+            });
+            lazyLoadBackgroundImages('#whqGrid .case-img');
+        }
+
+        // 懒加载背景图片
+        function lazyLoadBackgroundImages(selector) {
+            const images = document.querySelectorAll(selector);
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        const src = img.getAttribute('data-src');
+                        if (src) {
+                            img.style.backgroundImage = `url('${src}')`;
+                            observer.unobserve(img);
+                        }
+                    }
+                });
+            }, { rootMargin: '100px' });
+            images.forEach(img => observer.observe(img));
+        }
+
+        // 灯箱功能（用于文化墙单图放大）
+        let currentImageList = [];
+        let currentIndex = 0;
+        function openLightboxWithImage(url) {
+            currentImageList = [url];
+            currentIndex = 0;
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = lightbox.querySelector('.lightbox-img');
+            lightboxImg.src = url;
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            const prevBtn = lightbox.querySelector('.lightbox-prev');
+            const nextBtn = lightbox.querySelector('.lightbox-next');
+            if (currentImageList.length <= 1) {
+                prevBtn.style.display = 'none';
+                nextBtn.style.display = 'none';
+            } else {
+                prevBtn.style.display = 'flex';
+                nextBtn.style.display = 'flex';
+            }
+        }
+        function initLightbox() {
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = lightbox.querySelector('.lightbox-img');
+            const closeBtn = lightbox.querySelector('.lightbox-close');
+            const prevBtn = lightbox.querySelector('.lightbox-prev');
+            const nextBtn = lightbox.querySelector('.lightbox-next');
+            function closeLightbox() {
+                lightbox.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+            function nextImage() {
+                if (currentImageList.length === 0) return;
+                currentIndex = (currentIndex + 1) % currentImageList.length;
+                lightboxImg.src = currentImageList[currentIndex];
+            }
+            function prevImage() {
+                if (currentImageList.length === 0) return;
+                currentIndex = (currentIndex - 1 + currentImageList.length) % currentImageList.length;
+                lightboxImg.src = currentImageList[currentIndex];
+            }
+            closeBtn.addEventListener('click', closeLightbox);
+            prevBtn.addEventListener('click', prevImage);
+            nextBtn.addEventListener('click', nextImage);
+            lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
+            document.addEventListener('keydown', (e) => {
+                if (!lightbox.classList.contains('active')) return;
+                if (e.key === 'Escape') closeLightbox();
+                if (e.key === 'ArrowRight') nextImage();
+                if (e.key === 'ArrowLeft') prevImage();
+            });
+        }
+
+
     // 展会资讯数据
     const expoNews = [
         { city: "上海", name: "中国国际进口博览会", date: "2026.11.05-11.10", status: "招展中" },
-        { city: "广州", name: "广交会 (春交会)", date: "2026.04.15-05.05", status: "即将截止" },
+        { city: "广州", name: "广交会 (春交会)", date: "2026.04.15-05.05", status: "已截止" },
         { city: "北京", name: "中国国际服务贸易交易会", date: "2026.09.12-09.16", status: "火热报名" },
         { city: "深圳", name: "高交会", date: "2026.11.15-11.19", status: "展位预订" }
     ];
@@ -405,10 +625,14 @@
 
     // 轮播图初始化
     new Swiper('.mySwiper', { loop: true, autoplay: { delay: 4000 }, pagination: { el: '.swiper-pagination' }, navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' } });
-    new Swiper('.testimonialSwiper', { loop: true, autoplay: { delay: 3000 }, slidesPerView: 1, spaceBetween: 30, breakpoints: { 768: { slidesPerView: 2 } }, pagination: { el: '.swiper-pagination', clickable: true } });
+    // 客户好评轮播（已注释，若启用则取消注释）
+    // new Swiper('.testimonialSwiper', { loop: true, autoplay: { delay: 3000 }, slidesPerView: 1, spaceBetween: 30, breakpoints: { 768: { slidesPerView: 2 } }, pagination: { el: '.swiper-pagination', clickable: true } });
 
     renderCases();
+    renderHallCases();
+    renderWhq();
     renderExpoNews();
+    initLightbox();
     // 移动端菜单初始化已在 common.js 中完成，无需重复调用
 </script>
 </body>
