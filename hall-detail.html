@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>展厅案例详情 - 厦门荣晟通展览</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="common.css">
+    <style>
+        .detail-container {
+            max-width: 1200px;
+            margin: 60px auto;
+            padding: 0 20px;
+        }
+        .detail-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #1e4a6e;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 24px;
+            margin: 40px 0;
+        }
+        .gallery img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            border-radius: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .gallery img:hover {
+            transform: scale(1.02);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+        .back-link {
+            display: inline-block;
+            margin-top: 20px;
+            color: #c73b2b;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .loading {
+            text-align: center;
+            padding: 50px;
+            font-size: 1.2rem;
+            color: #6c86a3;
+        }
+        /* 灯箱样式（复用） */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.9);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        .lightbox.active { display: flex; }
+        .lightbox-img { max-width: 90%; max-height: 80%; object-fit: contain; }
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 2rem;
+            color: white;
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
+        .lightbox-prev, .lightbox-next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 2rem;
+            color: white;
+            background: rgba(0,0,0,0.5);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+        .lightbox-prev { left: 20px; }
+        .lightbox-next { right: 20px; }
+        @media (max-width: 768px) {
+            .lightbox-prev, .lightbox-next { width: 40px; height: 40px; font-size: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- 导航栏（与首页完全一致，复制即可） -->
+<header class="main-navbar">
+    <div class="logo-area" style="display: flex !important; flex-direction: row !important; align-items: center; gap: 12px; flex-wrap: nowrap;">
+            <img src="images/logo.jpg" alt="荣晟通展览" style="height: 45px; width: auto; flex-shrink: 0;">
+            <div>
+                <div class="logo-text" style="background: linear-gradient(135deg, #499FC7, #2A5997); background-clip: text; -webkit-background-clip: text; color: transparent;" onclick="location.href='index.html'">荣晟通展览公司</div>
+                <div class="logo-sub">RONGSHENGTONG EXPO · 展台设计搭建专家</div>
+            </div>
+        </div>
+</header>
+
+<div class="container detail-container">
+    <div id="detailContent" class="loading">加载中...</div>
+    <a href="index.html" class="back-link">← 返回首页</a>
+</div>
+
+<!-- 灯箱 -->
+<div id="lightbox" class="lightbox">
+    <button class="lightbox-close"><i class="fas fa-times"></i></button>
+    <button class="lightbox-prev"><i class="fas fa-chevron-left"></i></button>
+    <img class="lightbox-img" alt="">
+    <button class="lightbox-next"><i class="fas fa-chevron-right"></i></button>
+</div>
+
+<footer class="footer">
+    <div class="container footer-grid">
+        <div><h4>厦门荣晟通展览</h4><p>展台设计/搭建/活动策划<br>咨询热线：13859987737</p></div>
+        <div><h4>快速链接</h4><a href="index.html">首页</a><br><a href="case.html">展台案例</a><br><a href="about.html">关于我们</a><br><a href="contact.html">联系我们</a></div>
+        <div><h4>关注我们</h4><p><i class="fab fa-weixin"></i> 官方微信</p><img src="images/wechat_QR.jpg" style="width:80px; border-radius:8px;"></div>
+    </div>
+    <div class="container" style="text-align:center; margin-top:32px; border-top:1px solid #2c4b64; padding-top:20px;">© 2025 厦门荣晟通展览公司 版权所有</div>
+</footer>
+
+<script src="common.js"></script>
+<script>
+    const params = new URLSearchParams(window.location.search);
+    const caseId = parseInt(params.get('id'));
+
+    // 定义案例信息（与首页保持一致，可共用数据）
+    const hallCases = [
+    { id: 1, title: "企业展厅设计1", desc: "现代科技感，简约得体" },
+    { id: 2, title: "企业展厅设计2", desc: "简约大气，体现企业人文关怀" },
+    { id: 3, title: "企业展厅设计3", desc: "庄重典雅，彰显荣誉成就" },
+    { id: 4, title: "企业展厅设计4", desc: "历史脉络清晰，现代展示手法" }
+];
+    const caseData = hallCases.find(c => c.id === caseId);
+    if (!caseData) {
+        document.getElementById('detailContent').innerHTML = '<div class="loading">案例不存在，请返回首页。</div>';
+    } else {
+        // 动态加载该案例的所有图片（最多8张，实际2-5张）
+        const basePath = 'images/whq/';
+        const images = [];
+        for (let i = 1; i <= 8; i++) {
+            const imgPath = `${basePath}whzt_case${caseId}-${i}.jpg`;
+            // 注意：这里无法预知文件存在性，但尝试加载，如果404会显示破碎图标。
+            // 更好的做法是异步检测，但为简化，直接添加所有可能的序号，图片加载失败时由CSS显示占位。
+            images.push(imgPath);
+        }
+        // 只保留前几张，实际可以根据需要限制数量，这里保留全部
+        const galleryHtml = images.map(img => `<img src="${img}" alt="展厅案例图片" loading="lazy" onerror="this.style.display='none'">`).join('');
+        const detailHtml = `
+            <div class="detail-title">${caseData.title}</div>
+            <div class="detail-desc" style="margin-bottom:30px;">${caseData.desc}<br>本案例包含多角度实景照片，点击图片可放大查看。</div>
+            <div class="gallery" id="galleryContainer">
+                ${galleryHtml}
+            </div>
+        `;
+        document.getElementById('detailContent').innerHTML = detailHtml;
+
+        // 初始化灯箱（为所有图片添加点击放大）
+        function initLightbox() {
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = lightbox.querySelector('.lightbox-img');
+            const closeBtn = lightbox.querySelector('.lightbox-close');
+            const prevBtn = lightbox.querySelector('.lightbox-prev');
+            const nextBtn = lightbox.querySelector('.lightbox-next');
+            let currentImages = [];
+            let currentIndex = 0;
+
+            function openLightbox(images, index) {
+                currentImages = images;
+                currentIndex = index;
+                lightboxImg.src = currentImages[currentIndex];
+                lightbox.classList.add('active');
+                document.body.style.overflow = 'hidden';
+                // 显示/隐藏箭头
+                if (currentImages.length <= 1) {
+                    prevBtn.style.display = 'none';
+                    nextBtn.style.display = 'none';
+                } else {
+                    prevBtn.style.display = 'flex';
+                    nextBtn.style.display = 'flex';
+                }
+            }
+            function closeLightbox() {
+                lightbox.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+            function nextImage() {
+                currentIndex = (currentIndex + 1) % currentImages.length;
+                lightboxImg.src = currentImages[currentIndex];
+            }
+            function prevImage() {
+                currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
+                lightboxImg.src = currentImages[currentIndex];
+            }
+            closeBtn.addEventListener('click', closeLightbox);
+            prevBtn.addEventListener('click', prevImage);
+            nextBtn.addEventListener('click', nextImage);
+            lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
+            document.addEventListener('keydown', (e) => {
+                if (!lightbox.classList.contains('active')) return;
+                if (e.key === 'Escape') closeLightbox();
+                if (e.key === 'ArrowRight') nextImage();
+                if (e.key === 'ArrowLeft') prevImage();
+            });
+
+            // 绑定画廊中图片的点击事件（使用事件委托）
+            const gallery = document.getElementById('galleryContainer');
+            gallery.addEventListener('click', (e) => {
+                if (e.target.tagName === 'IMG') {
+                    const imgs = Array.from(gallery.querySelectorAll('img')).filter(img => img.style.display !== 'none');
+                    const srcList = imgs.map(img => img.src);
+                    const idx = srcList.indexOf(e.target.src);
+                    if (idx !== -1) openLightbox(srcList, idx);
+                }
+            });
+        }
+        initLightbox();
+    }
+</script>
+</body>
+</html>
