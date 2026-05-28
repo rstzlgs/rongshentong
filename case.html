@@ -175,12 +175,12 @@
         </div>
     </div>
 
-    <div class="filter-group">
+    <!-- <div class="filter-group">
         <div class="filter-tabs" id="builtTabs">
             <div class="filter-tab" data-built="all">全部案例</div>
             <div class="filter-tab" data-built="true">落地案例</div>
         </div>
-    </div>
+    </div> -->
 
     <div class="case-grid" id="caseGrid"></div>
 </div>
@@ -237,7 +237,7 @@
                         <h4>${c.title}</h4>
                         <p>${c.desc}</p>
                         <span class="case-badge">面积：${c.size === "small" ? "≤36㎡" : (c.size === "medium" ? "36-72㎡" : ">72㎡")}</span>
-                        ${c.built ? '<span class="case-badge built-badge">⭐ 落地案例</span>' : ''}
+                        ${c.built ? '<span class="case-badge built-badge">⭐</span>' : ''}
                     </div>
                 </div>
             `).join('');
